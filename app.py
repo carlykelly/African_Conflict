@@ -2,6 +2,8 @@ import pandas as pd
 import os
 from flask import Flask, render_template, redirect, request, jsonify, send_from_directory
 from sqlalchemy import create_engine, func
+from bs4 import BeautifulSoup
+import requests
 
 is_heroku = False
 if 'IS_HEROKU' in os.environ:
@@ -118,6 +120,31 @@ def population():
     results_json = results_df.to_json(orient='records')
     conn.close()
     return results_json
+
+
+@app.route("/api/data/getticker/<country>")
+def ticker(country):
+    url = f"https://news.google.com/rss/search?q={country}"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'xml')
+    results = soup.find_all('item')
+    news = []
+
+    for result in results:
+        try:
+            title = result.title.text
+            link = result.link.text
+            date = result.pubDate.text
+
+            if (title and link and date):
+                news.append(date)
+                news.append(title)
+                news.append(link)
+        except AttributeError as e:
+            print(e)
+
+    return jsonify(news)
+   
 
 if __name__ == '__main__':
     app.run(debug=True)

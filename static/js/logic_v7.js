@@ -57,17 +57,17 @@ var baseMaps
   var dict_key = 0
 
   //(BSS) vvvvvvvvvvvvvvvv TICKER: SELECTED COUNTRY 2018 SNAPSHOT vvvvvvvvvvvv
-    function buildsnapshot() {
-      var panel = d3.select('#sample-metadata');
-      var ticker = '';
-      panel.html("");
-      selected_country_json_array.forEach(rec => {
-        var series = rec[0]['series'];
-        var year = rec[0]['2018'];
-        ticker = ticker + series + ': ' + year + ' <> ';
-      });
-      panel.append('marquee').text(ticker);
-    }
+    // function buildsnapshot() {
+    //   var panel = d3.select('#sample-metadata');
+    //   var ticker = '';
+    //   panel.html("");
+    //   selected_country_json_array.forEach(rec => {
+    //     var series = rec[0]['series'];
+    //     var year = rec[0]['2018'];
+    //     ticker = ticker + series + ': ' + year + ' <> ';
+    //   });
+    //   panel.append('marquee').text(ticker);
+    // }
 //   //^^^^^^^^^^^^^^^^ TICKER: SELECTED COUNTRY 2018 SNAPSHOT ^^^^^^^^^^^^^
   
   // Grab data with d3
@@ -92,6 +92,9 @@ var baseMaps
             // Set mouse events to change map styling
             country_name = feature.properties.name;
 
+
+            // PLACEHOLDER FOR D3 CALL
+          
             // if(not_ssa.indexOf(country_name) === -1){
             layer.on({ //// ?????? get it later
                 // When a user's mouse touches a map feature, the mouseover event calls this function, that feature's opacity changes to 90% so that it stands out
@@ -119,7 +122,20 @@ var baseMaps
                 },
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
-                    console.log(event.target)  
+                    country_name = event.target.feature.properties.name
+                    d3.json(`/api/data/getticker/${country_name}`).then(function(country_data){
+                      console.log(country_data)
+                      var panel = d3.select('#sample-metadata');
+                      var ticker = '';
+                      panel.html("");
+                      country_data.forEach(rec => {
+                        ticker = ticker + rec;
+                      });
+                      panel.append('marquee').text(ticker);
+                      // console.log(ticker)
+                    }
+                    );
+          
                 
 
                     selected_country = feature.properties.name
