@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from flask import Flask, render_template, redirect, request, jsonify
+from flask import Flask, render_template, redirect, request, jsonify, send_from_directory
 from sqlalchemy import create_engine, func
 
 is_heroku = False
@@ -16,9 +16,12 @@ else:
     remote_db_name = os.environ.get('remote_db_name')
 
 app = Flask(__name__)
-
 cloud_engine = create_engine(f"postgresql://{remote_db_user}:{remote_db_pwd}@{remote_db_endpoint}:{remote_db_port}/{remote_db_name}")
 
+@app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 #Map/DashBoard
 @app.route("/")
 def home():

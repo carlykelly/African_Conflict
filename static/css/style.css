@@ -36,3 +36,94 @@
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
+
+  /* End of Legend Styling */
+
+  body {
+    padding: 0;
+    margin: 0;
+    background-color:#17252A  ;
+  }
+  
+  #map,
+  body,
+  html {
+    height: 100%;
+    position: relative;
+  
+  }
+  
+  #select {
+    padding-bottom: 10px;
+    
+  }
+  
+  .buttons {
+    align-items: left;
+  }
+  
+  .panel-body{
+    background-color:#2B7A78 ;
+  }
+  
+  .panel-title{
+    color: whitesmoke;
+    padding: 37px
+  }
+  
+  
+  .filter-list-group-item{
+    width: 730px;
+  }
+  
+  
+  h1{
+    text-align: center;
+    color: whitesmoke;
+  
+  }
+  
+  h4 {
+    text-align: right;
+    color:#DEF2F1;
+  }
+  
+  h5 {
+    font-size: large;
+    font-weight: bold;
+    color: whitesmoke;
+  }
+  
+  .well {
+    background-color: #2B7A78;
+    height: 50px;
+    border: none;
+  }
+  
+  #banner {
+    background-color: #2B7A78 ;
+    border-top: indianred;
+    border-bottom: goldenrod;
+    border: solid;
+    border-width: 0 1px;
+  }
+  
+  #selDataset {
+    font-weight: bolder;
+    color: #17252A ;
+    border-width: 0 1px;
+    border: solid;
+    border-color:  #2B7A78 ;
+    padding: 10px;
+    font-size: larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  
+  .row {
+    padding: 5px ;
+  }
+  
+  #sample-metadata {padding: 15px;
+    color: whitesmoke
+  
+  }
