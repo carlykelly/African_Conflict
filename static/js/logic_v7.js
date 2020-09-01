@@ -766,21 +766,21 @@ var baseMaps
   //(FEPJ)vvvvvvvvvvvvvvvvv USE SELECTED COUNTRY FROM DROPDOWN/MAP TO FILTER GEOJSON vvvvvvvvvvvvvvvvvvvvvvv 
   //Not used in new geojson
   //data filter
-    function filter_endpointJson(selected_country){ 
-      indexEndPoints.forEach(iep => {
+    // function filter_endpointJson(selected_country){ 
+    //   indexEndPoints.forEach(iep => {
         
-        d3.json(iep).then(data => {
-          if (indexEndPoints.length > 0){
-            var selected_country_json = data.filter(d => selected_country == d.country_name)
-            selected_country_json_array[selected_country_json[0]['id']] = selected_country_json
-          }
-          //PLOT Construction
-          build_graph()
+    //     d3.json(iep).then(data => {
+    //       if (indexEndPoints.length > 0){
+    //         var selected_country_json = data.filter(d => selected_country == d.country_name)
+    //         selected_country_json_array[selected_country_json[0]['id']] = selected_country_json
+    //       }
+    //       //PLOT Construction
+    //       build_graph()
 
-          buildsnapshot()
-        }); 
-      });    
-    };
+    //       buildsnapshot()
+    //     }); 
+    //   });    
+    // };
   //(FEPJ)^^^^^^^^^^^^^^^^^^^^^ USE SELECTED COUNTRY FROM DROPDOWN/MAP TO FILTER GEOJSON ^^^^^^^^^^^^^^^^^^^
 
 
@@ -1012,11 +1012,26 @@ var baseMaps
     
     //     }
     //   }
-function optionChanged(country){
-    
 
-}
- 
+d3.json(geoData).then(function(d){
+d3.select('#selDataset').on('change.carly', function(){
+  country = d3.select('#selDataset').node().value
+  poly = d.features.filter(a => a.properties.name == country)
+  if(outline){
+    myMap.removeLayer(outline)
+    };
+    outline = L.geoJSON(poly[0].geometry, {
+      color: "black",
+      weight: 5,
+      opacity: 2,
+      interactive: false,
+      fillOpacity: 0
+    }).addTo(myMap)
+
+})
+
+})
+
 
 
  
