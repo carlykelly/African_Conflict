@@ -128,7 +128,9 @@ def ticker(country):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'xml')
     results = soup.find_all('item')
-    news = []
+    titles = []
+    links = []
+    dates = []
 
     for result in results:
         try:
@@ -137,13 +139,14 @@ def ticker(country):
             date = result.pubDate.text
 
             if (title and link and date):
-                news.append(date)
-                news.append(title)
-                news.append(link)
+                dates.append(date)
+                titles.append(title)
+                links.append(link)
         except AttributeError as e:
             print(e)
+    news = {'Title' : titles, 'Link' : links, 'Date' : dates}
 
-    return jsonify(news)
+    return (jsonify(news))
    
 
 if __name__ == '__main__':

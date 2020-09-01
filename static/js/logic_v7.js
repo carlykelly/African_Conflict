@@ -123,16 +123,16 @@ var baseMaps
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
                     country_name = event.target.feature.properties.name
-                    d3.json(`/api/data/getticker/${country_name}`).then(function(country_data){
-                      console.log(country_data)
+                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
                       var panel = d3.select('#sample-metadata');
                       var ticker = '';
                       panel.html("");
-                      country_data.forEach(rec => {
-                        ticker = ticker + rec;
-                      });
+                      for (i = 0; i < 5; i++){
+                        text = `${news['Date'][i]} | ${news['Title'][i]} | ${news['Link'][i]} || `
+                        console.log(text)
+                        ticker = ticker + text                           
+                      }
                       panel.append('marquee').text(ticker);
-                      // console.log(ticker)
                     }
                     );
           
