@@ -72,6 +72,19 @@ var baseMaps
     // (BPDD) ^^^^^^^^^^^^^^^^^^ BUILD & POPULATE DROPDOWN VALUES AND FILTER NONE SUB-SAHARAN COUTNRIES ^^^^^^^^^^
   builddropdown()
 
+function createNews(country){
+  var panel = d3.select('#sample-metadata');
+  d3.json(`/api/data/getticker/${country}`).then(function(news){
+    var ticker = '';
+    panel.html("");
+    var marquee = panel.append('marquee');
+    for (i = 0; i < 5; i++){
+      var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+      var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
+        }                 
+   }
+);   
+}
   // Using the dropdown menu to outline the country
 
   d3.select('#selDataset').on('change.carly', function(){
@@ -87,19 +100,7 @@ var baseMaps
       fillOpacity: 0
     }).addTo(myMap)
     
-    var panel = d3.select('#sample-metadata');
-        d3.json(`/api/data/getticker/${country}`).then(function(news){
-          var ticker = '';
-          panel.html("");
-          var marquee = panel.append('marquee');
-          for (i = 0; i < 5; i++){
-            var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-            var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
-              }
-                      
-                      
-         }
-    );       
+    createNews(country)
 
    })
 
@@ -134,20 +135,8 @@ var baseMaps
                 click: function click_func(event) {
 
                     country_name = event.target.feature.properties.name
-                    var panel = d3.select('#sample-metadata');
-                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
-                      var ticker = '';
-                      panel.html("");
-                      var marquee = panel.append('marquee');
-                      for (i = 0; i < 5; i++){
-                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
-                      }
-                      
-                      
-                    }
-                    );         
-                
+
+                    createNews(country_name)
 
                     selected_country = feature.properties.name
                     d3.select('#selDataset').node().value = selected_country 
@@ -246,19 +235,8 @@ var baseMaps
                 click: function click_func(event) {
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-                    var panel = d3.select('#sample-metadata');
-                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
-                      var ticker = '';
-                      panel.html("");
-                      var marquee = panel.append('marquee');
-                      for (i = 0; i < 5; i++){
-                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
-                      }
-                      
-                      
-                    }
-                    ); 
+
+                    createNews(country_name)
 
                     d3.select('#selDataset').node().value = selected_country 
                     layer = event.target;
@@ -356,19 +334,8 @@ var baseMaps
             
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-                    var panel = d3.select('#sample-metadata');
-                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
-                      var ticker = '';
-                      panel.html("");
-                      var marquee = panel.append('marquee');
-                      for (i = 0; i < 5; i++){
-                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
-                      }
-                      
-                      
-                    }
-                    ); 
+
+                    createNews(country_name)
 
                     d3.select('#selDataset').node().value = selected_country 
                     layer = event.target;
@@ -467,19 +434,9 @@ var baseMaps
     
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-                    var panel = d3.select('#sample-metadata');
-                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
-                      var ticker = '';
-                      panel.html("");
-                      var marquee = panel.append('marquee');
-                      for (i = 0; i < 5; i++){
-                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
-                      }
-                      
-                      
-                    }
-                    ); 
+                    
+                    createNews(country_name)
+
 
                     d3.select('#selDataset').node().value = selected_country 
                     layer = event.target;
