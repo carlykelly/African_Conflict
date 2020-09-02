@@ -104,15 +104,17 @@ var baseMaps
                 click: function click_func(event) {
 
                     country_name = event.target.feature.properties.name
+                    var panel = d3.select('#sample-metadata');
                     d3.json(`/api/data/getticker/${country_name}`).then(function(news){
-                      var panel = d3.select('#sample-metadata');
                       var ticker = '';
                       panel.html("");
+                      var marquee = panel.append('marquee');
                       for (i = 0; i < 5; i++){
-                        text = `${news['Date'][i]} | ${news['Title'][i]} | ${news['Link'][i]} || `
-                        ticker = ticker + text                           
+                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
                       }
-                      panel.append('marquee').text(ticker);
+                      
+                      
                     }
                     );         
                 
@@ -213,6 +215,21 @@ var baseMaps
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
                     selected_country = feature.properties.name
+                    country_name = event.target.feature.properties.name
+                    var panel = d3.select('#sample-metadata');
+                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
+                      var ticker = '';
+                      panel.html("");
+                      var marquee = panel.append('marquee');
+                      for (i = 0; i < 5; i++){
+                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
+                      }
+                      
+                      
+                    }
+                    ); 
+
                     d3.select('#selDataset').node().value = selected_country 
                     layer = event.target;
                     layer.setStyle({
@@ -308,6 +325,21 @@ var baseMaps
                 click: function click_func(event) {
             
                     selected_country = feature.properties.name
+                    country_name = event.target.feature.properties.name
+                    var panel = d3.select('#sample-metadata');
+                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
+                      var ticker = '';
+                      panel.html("");
+                      var marquee = panel.append('marquee');
+                      for (i = 0; i < 5; i++){
+                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
+                      }
+                      
+                      
+                    }
+                    ); 
+
                     d3.select('#selDataset').node().value = selected_country 
                     layer = event.target;
                     console.log(layer)
@@ -404,6 +436,21 @@ var baseMaps
                 click: function click_func(event) {
     
                     selected_country = feature.properties.name
+                    country_name = event.target.feature.properties.name
+                    var panel = d3.select('#sample-metadata');
+                    d3.json(`/api/data/getticker/${country_name}`).then(function(news){
+                      var ticker = '';
+                      panel.html("");
+                      var marquee = panel.append('marquee');
+                      for (i = 0; i < 5; i++){
+                        var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+                        var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
+                      }
+                      
+                      
+                    }
+                    ); 
+
                     d3.select('#selDataset').node().value = selected_country 
                     layer = event.target;
                     layer.setStyle({
@@ -433,7 +480,7 @@ var baseMaps
         valueProperty: "Corruption_2018",
     
         // Set color scale
-        scale: ["#ffffff", "#1520A6"],
+        scale: ["#ffffff", "#003EFF"],
     
         // Number of breaks in step range
         steps: 10,
@@ -487,7 +534,7 @@ var baseMaps
             tileSize: 512,
             maxZoom: 18,
             zoomOffset: -1,
-            id: "mapbox/dark-v9",
+            id: "mapbox/light-v9",
             accessToken: 'sk.eyJ1IjoiY2FybHlma2VsbHkiLCJhIjoiY2tkZ3U4Z3B3Mmx6dDJ4cG16Y2l6eWQ1bCJ9.ewwhVCi9nw45LL2iNZ1hbA'
           }).addTo(myMap);
 
