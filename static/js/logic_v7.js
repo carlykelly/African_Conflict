@@ -24,6 +24,7 @@ var indexSelector_line1 = 1;
 var indexSelector_line2 = 1;
 var indexSelector = 0;
 var fdi_vs_metric = 0;
+var chosenLayer
 
 // Creating map object
 
@@ -85,6 +86,27 @@ function createNews(country){
    }
 );   
 }
+
+function makeOutline(country_name){
+  poly = data.features.filter(a => a.properties.name == country_name)
+                    if(outline){
+                      myMap.removeLayer(outline)
+                      };
+                      outline = L.geoJSON(poly[0].geometry, {
+                        color: "black",
+                        weight: 5,
+                        opacity: 2,
+                        fillOpacity: 0
+                      }).addTo(myMap)
+}
+
+function mouseout_func(event) {      
+  layer = event.target;
+  layer.setStyle({
+  color: 'black',
+  weight: 1
+  });
+}
   // Using the dropdown menu to outline the country
 
   d3.select('#selDataset').on('change.carly', function(){
@@ -119,18 +141,14 @@ function createNews(country){
                         color: 'black',
                         weight: 5
                         });
+
+                        chosenLayer = layer
+
+                          
                     }
                 },
                 // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-                mouseout: function mouseout_func(event) {     
-                    if (selected_country != feature.properties.name ){
-                        layer = event.target;
-                        layer.setStyle({
-                        color: 'black',
-                        weight: 1
-                        });              
-                    }
-                },
+                mouseout: mouseout_func,
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
 
@@ -140,26 +158,9 @@ function createNews(country){
 
                     selected_country = feature.properties.name
                     d3.select('#selDataset').node().value = selected_country 
-                                         
-                    layer = event.target;
-                    layer.setStyle({
-                        color: 'black',
-                        weight: 5
-                    });    
 
-                    if(clickflag == 0){
-                        old_layer = layer
-                        clickflag ++
-                    }
-                
-                    if(old_layer != layer){
-                        old_layer.setStyle({
-                            color: 'black',
-                            weight: 1
-                        });  
-
-                        old_layer = layer
-                    }   
+                    makeOutline(country_name)
+ 
             
                 },    
 
@@ -219,18 +220,12 @@ function createNews(country){
                         color: 'black',
                         weight: 5
                         });
+                        chosenLayer = layer
                     }
                 },
                 // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-                mouseout: function mouseout_func(event) {      
-                    if (selected_country != feature.properties.name ){
-                        layer = event.target;
-                        layer.setStyle({
-                        color: 'black',
-                        weight: 1
-                        });              
-                    }
-                },
+                mouseout: mouseout_func,    
+
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
                     selected_country = feature.properties.name
@@ -239,25 +234,8 @@ function createNews(country){
                     createNews(country_name)
 
                     d3.select('#selDataset').node().value = selected_country 
-                    layer = event.target;
-                    layer.setStyle({
-                        color: 'black',
-                        weight: 5
-                    });    
-
-                    if(clickflag == 0){
-                        old_layer = layer
-                        clickflag ++
-                    }
-                
-                    if(old_layer != layer){
-                        old_layer.setStyle({
-                            color: 'black',
-                            weight: 1
-                        });  
-
-                        old_layer = layer
-                    }   
+                    makeOutline(country_name)
+  
             
                 },    
 
@@ -313,6 +291,7 @@ function createNews(country){
                 mouseover: function mouseover_func(event) {
                     if (selected_country != feature.properties.name ){
                         layer = event.target;
+                        chosenLayer = event.target
                         layer.setStyle({
                         color: 'black',
                         weight: 5
@@ -320,15 +299,7 @@ function createNews(country){
                     }
                 },
                 // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-                mouseout: function mouseout_func(event) {    
-                    if (selected_country != feature.properties.name ){
-                        layer = event.target;
-                        layer.setStyle({
-                        color: 'black',
-                        weight: 1
-                        });              
-                    }
-                },
+                mouseout: mouseout_func,
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
             
@@ -338,26 +309,8 @@ function createNews(country){
                     createNews(country_name)
 
                     d3.select('#selDataset').node().value = selected_country 
-                    layer = event.target;
-                    console.log(layer)
-                    layer.setStyle({
-                        color: 'black',
-                        weight: 5
-                    });    
 
-                    if(clickflag == 0){
-                        old_layer = layer
-                        clickflag ++
-                    }
-                
-                    if(old_layer != layer){
-                        old_layer.setStyle({
-                            color: 'black',
-                            weight: 1
-                        });  
-
-                        old_layer = layer
-                    }   
+                    makeOutline(country_name)
             
                 },    
 
@@ -417,48 +370,23 @@ function createNews(country){
                         color: 'black',
                         weight: 5
                         });
+                        chosenLayer = layer
                     }
                 },
                 // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
-                mouseout: function mouseout_func(event) {    
-                    if (selected_country != feature.properties.name ){
-                        layer = event.target;
-                        layer.setStyle({
-                        color: 'black',
-                        weight: 1
-                        });              
-                    }
-                },
+                mouseout:mouseout_func,
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
     
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-                    
+
                     createNews(country_name)
 
 
                     d3.select('#selDataset').node().value = selected_country 
-                    layer = event.target;
-                    layer.setStyle({
-                        color: 'black',
-                        weight: 5
-                    });    
 
-                    if(clickflag == 0){
-                        old_layer = layer
-                        clickflag ++
-                    }
-                
-                    if(old_layer != layer){
-                        old_layer.setStyle({
-                            color: 'black',
-                            weight: 1
-                        });  
-
-                        old_layer = layer
-                    }   
-            
+                    makeOutline(country_name)
                 },    
 
             });
@@ -532,6 +460,17 @@ function createNews(country){
           this.removeControl(legendMort)
           this.removeControl(legendCase)
           this.removeControl(legendCorupt)
+
+          if(outline){
+            myMap.removeLayer(outline)
+            outline.addTo(myMap)
+            }
+            
+          if(chosenLayer.style.weight == 5){
+            eventlayer.setStyle({
+              weight:5
+            })
+          }
 
           if(eventlayer.name == 'GDP Growth Rate'){
             legendCase.addTo(myMap)
