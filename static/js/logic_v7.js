@@ -70,8 +70,38 @@ var baseMaps
     });     
   };
     // (BPDD) ^^^^^^^^^^^^^^^^^^ BUILD & POPULATE DROPDOWN VALUES AND FILTER NONE SUB-SAHARAN COUTNRIES ^^^^^^^^^^
-
   builddropdown()
+
+  // Using the dropdown menu to outline the country
+
+  d3.select('#selDataset').on('change.carly', function(){
+    country = d3.select('#selDataset').node().value
+    poly = data.features.filter(a => a.properties.name == country)
+    if(outline){
+    myMap.removeLayer(outline)
+    };
+    outline = L.geoJSON(poly[0].geometry, {
+      color: "black",
+      weight: 5,
+      opacity: 2,
+      fillOpacity: 0
+    }).addTo(myMap)
+    
+    var panel = d3.select('#sample-metadata');
+        d3.json(`/api/data/getticker/${country}`).then(function(news){
+          var ticker = '';
+          panel.html("");
+          var marquee = panel.append('marquee');
+          for (i = 0; i < 5; i++){
+            var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+            var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
+              }
+                      
+                      
+         }
+    );       
+
+   })
 
     // Create a new choropleth layer
     ethnicity = L.choropleth(data, {
@@ -903,24 +933,6 @@ d3.select("#corr-chkbx").on('change',handleChange)
 })
 
 
-  // d3.json(geoData).then(function(d){
-  // d3.select('#selDataset').on('change.carly', function(){
-  //   country = d3.select('#selDataset').node().value
-  //   poly = d.features.filter(a => a.properties.name == country)
-  //   if(outline){
-  //   myMap.removeLayer(outline)
-  //   };
-  //   outline = L.geoJSON(poly[0].geometry, {
-  //     color: "black",
-  //     weight: 5,
-  //     opacity: 2,
-  //     interactive: false,
-  //     fillOpacity: 0
-  //   }).addTo(myMap)
-
-  //  })
-
-  //  })
 
 
 
