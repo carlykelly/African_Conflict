@@ -466,11 +466,6 @@ function mouseout_func(event) {
             outline.addTo(myMap)
             }
             
-          if(chosenLayer.style.weight == 5){
-            eventlayer.setStyle({
-              weight:5
-            })
-          }
 
           if(eventlayer.name == 'GDP Growth Rate'){
             legendCase.addTo(myMap)

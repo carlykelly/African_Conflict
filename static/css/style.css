@@ -127,3 +127,15 @@
     color: whitesmoke
   
   }
+
+  a {
+    color: whitesmoke
+  }
+
+  marquee {
+    font-size: 30px
+  }
+  a:hover{
+    color: palegreen
+  }
+

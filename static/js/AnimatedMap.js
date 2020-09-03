@@ -8,7 +8,7 @@
 
 
 //calling in the data
-Plotly.d3.csv("../Conflict.csv", function (err, rows) {function filter_and_unpack(rows, key, year) {
+Plotly.d3.csv("../static/Conflict.csv", function (err, rows) {function filter_and_unpack(rows, key, year) {
         return rows.filter(row => row['year'] == year).map(row => row[key])
     }
 

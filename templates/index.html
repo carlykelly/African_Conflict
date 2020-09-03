@@ -92,14 +92,21 @@
         </div>         
       </div>
       
-
-
+      
+      <div class='row' style="height:700px">
       <div id="map" class= "col-lg-6 container-fluid justify-content-end"></div>
-
+      </div>
+      <div class='row' style="height:700px">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+          <div id = 'animated_map' class="justify-content-end"></div>
+        </div>
     </div>
-    <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script>
+    </div>
+    <!-- <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script> -->
     <script src="{{ url_for('static', filename='../static/js/logic_v7.js') }}"></script>
     <script src="{{ url_for('static', filename='../static/js/choropleth.js') }}"></script>
+    <script src="{{ url_for('static', filename='../static/js/AnimatedMap.js') }}"></script>
 
 </body>
 </html>
