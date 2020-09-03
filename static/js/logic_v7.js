@@ -824,6 +824,99 @@ d3.select("#corr-chkbx").on('change',handleChange)
 })
 
 
+// ATTEMPT AT A BUBBLE CHART BELOW!!!! //
+Highcharts.chart('container', {
+  chart: {
+      type: 'packedbubble',
+      height: '100%'
+  },
+  title: {
+      text: 'Feature Importance in Predicting Conflict'
+  },
+  tooltip: {
+      useHTML: true,
+      pointFormat: '<b>{point.name}:</b> {point.value}'
+  },
+  plotOptions: {
+      packedbubble: {
+          minSize: '20%',
+          maxSize: '100%',
+          zMin: 0,
+          zMax: 0.4,
+          layoutAlgorithm: {
+              gravitationalConstant: 0.1,
+              splitSeries: true,
+              seriesInteraction: false,
+              dragBetweenSeries: true,
+              parentNodeLimit: true
+          },
+          dataLabels: {
+              enabled: true,
+              format: '{point.name}',
+              filter: {
+                  property: 'y',
+                  operator: '>',
+                  value: .01
+              },
+              style: {
+                  color: 'black',
+                  textOutline: 'none',
+                  fontWeight: 'normal'
+              }
+          }
+      }
+  },
+  series: [{
+      name: 'Population Factors',
+      data: [{
+          name: 'Ethnic Score',
+          value: 0.226467
+      }, {
+          name: 'Rural Population Growth',
+          value: 0.107284
+      },
+      {
+          name: "Mortality Rate",
+          value: 0.088169
+      
+      }]
+  }, {
+      name: 'Economic Factors',
+      data: [{
+          name: "Total GNI",
+          value: 0.105394
+      },
+      {
+          name: "Total GDP",
+          value: 0.100491
+      },
+      {
+          name: "FDI Inflows Total",
+          value: 0.044585
+      },
+      {
+          name: "FDI Inflows GDP",
+          value: 0.042612
+      }],
+  }, {
+      name: 'Government Factors',
+      data: [{
+          name: "Government Effectiveness",
+          value: 0.114375
+      },
+      {
+          name: "Rule of Law",
+          value: 0.090855
+      },
+      {
+          name: "Government Stability",
+          value: 0.079769
+      }]
+  } 
+]
+});
+
+
 
 
 
