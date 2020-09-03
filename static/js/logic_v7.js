@@ -844,11 +844,8 @@ Highcharts.chart('container', {
           zMin: 0,
           zMax: 0.4,
           layoutAlgorithm: {
-              gravitationalConstant: 0.1,
-              splitSeries: true,
-              seriesInteraction: false,
-              dragBetweenSeries: true,
-              parentNodeLimit: true
+              gravitationalConstant: 0.01,
+              splitSeries: false
           },
           dataLabels: {
               enabled: true,
