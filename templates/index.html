@@ -47,91 +47,105 @@
 
   <!-- HighCharts -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 </head>
 
 <body>
-  <div id = 'fullPage'>
-    <div class = "section s1">
+  <!-- <div id='fullPage'>
+    <div class="section s1"> -->
 
-  <div class="container-fluid">
-    <h1> Foreign Direct Investment in Sub-Saharan Africa</h1>
-    <h4> Brought to you by LFG Industries Ltd.</h4>
-    <div class="row" id="banner">
-      <h3 class="panel-title">2018 Selected Country Snapshot Data</h3>
-      <div id="sample-metadata" class="panel-body"></div>
+      <div class="container-fluid">
+        <h1> Foreign Direct Investment in Sub-Saharan Africa</h1>
+        <h4> Brought to you by LFG Industries Ltd.</h4>
+        <div class="row" id="banner">
+          <h3 class="panel-title">2018 Selected Country Snapshot Data</h3>
+          <div id="sample-metadata" class="panel-body"></div>
 
-      <!-- adding checkbox -->
-      <!-- <div id="checkboxes"> -->
-      <!-- <input id='corr-chkbx' type="checkbox"/>Compare 2 Countries<br /> -->
-      <!-- <input type="checkbox" /> Political<br />
+          <!-- adding checkbox -->
+          <!-- <div id="checkboxes"> -->
+          <!-- <input id='corr-chkbx' type="checkbox"/>Compare 2 Countries<br /> -->
+          <!-- <input type="checkbox" /> Political<br />
             <input type="checkbox" /> Human development<br /> -->
-      <!-- </div> -->
-      <!-- <input type="text" id="newCheckText" /> <button id="addCheckbox">Add Checkbox</button> -->
-      <!-- adding checkbox -->
+          <!-- </div> -->
+          <!-- <input type="text" id="newCheckText" /> <button id="addCheckbox">Add Checkbox</button> -->
+          <!-- adding checkbox -->
 
-      <div class="col-md-2">
-        <div class="well">
-          <h5>Country Name:</h5>
+          <div class="col-md-2">
+            <div class="well">
+              <h5>Country Name:</h5>
 
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+              <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div id="dashboard" class="col-lg-6 container">
-    <dive class='buttons'>
-      <div class='row index'>
-        <button id="poliIndx-btn" type="button" class="btn btn-primary"
-          style="float: right; background-color:green; color:black;">Political Indicators</button>
-        <button id="lifeIndx-btn" type="button" class="btn btn-primary"
-          style="float: right; background-color:gold; color:black;">Life Indicators</button>
-        <button id="econIndx-btn" type="button" class="btn btn-primary"
-          style="float: right; background-color:red; color:black;">Economic Indicators</button>
+      <div id='fullPage'>
+        <div class="section s1">
+      <div id="dashboard" class="col-lg-6 container">
+        <dive class='buttons'>
+          <div class='row index'>
+            <button id="poliIndx-btn" type="button" class="btn btn-primary"
+              style="float: right; background-color:green; color:black;">Political Indicators</button>
+            <button id="lifeIndx-btn" type="button" class="btn btn-primary"
+              style="float: right; background-color:gold; color:black;">Life Indicators</button>
+            <button id="econIndx-btn" type="button" class="btn btn-primary"
+              style="float: right; background-color:red; color:black;">Economic Indicators</button>
+          </div>
+          <div class='row scatter'>
+            <button id="fdi_corr-btn" type="button" class="btn btn-primary"
+              style="float: right; background-color:gold">FDI
+              vs Corruption</button>
+            <button id="fdi_humnDev-btn" type="button" class="btn btn-primary" style="float: right;">FDI vs Human
+              Devlopment</button>
+            <button id="fdi_gdp-btn" type="button" class="btn btn-primary"
+              style="float: right; background-color:green;">FDI
+              vs GDP</button>
+          </div>
+        </dive>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div data-aos="fade-right" id="one"></div>
+          </div>
+        </div>
       </div>
-      <div class='row scatter'>
-        <button id="fdi_corr-btn" type="button" class="btn btn-primary" style="float: right; background-color:gold">FDI
-          vs Corruption</button>
-        <button id="fdi_humnDev-btn" type="button" class="btn btn-primary" style="float: right;">FDI vs Human
-          Devlopment</button>
-        <button id="fdi_gdp-btn" type="button" class="btn btn-primary" style="float: right; background-color:green;">FDI
-          vs GDP</button>
-      </div>
-    </dive>
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12">
-        <div data-aos="fade-right" id="one"></div>
-      </div>
-    </div>
-  </div>
 
 
-  <div class='row' style="height:700px">
-    <div id="map" class="col-lg-6 container-fluid justify-content-end"></div>
-  </div>
-</div>
-<div class = "section s2">
-  <div class='row' style="height:700px">
-    <div class="col-lg-6">
-      <figure class="highcharts-figure">
-        <div id="container"></div>
-        <p class="highcharts-description">
-            This chart shows how packed bubble charts can be grouped by series,
-            creating a hierarchy.
-        </p>
-    </figure>
+      <div class='row' style="height:700px">
+        <div id="map" class="col-lg-6 container-fluid justify-content-end"></div>
+      </div>
     </div>
-    <div class="col-lg-6">
-      <div id='animated_map' class="justify-content-end"></div>
+    <div class="section s2">
+      <div class='row' style="height:700px">
+        <div class="col-lg-4">
+          <figure class="highcharts-figure">
+            <div id="container"></div>
+            <p class="highcharts-description">
+              This chart shows how packed bubble charts can be grouped by series,
+              creating a hierarchy.
+            </p>
+          </figure>
+        </div>
+      <div class="col-lg-4">
+        <div id='animated_map' class="justify-content-end"></div>
+      </div>
+      <div class = "col-lg-4"
+      <div id="controlPanel">
+      <div id="traffic-light">
+        <div id="stopLight" class="bulb"></div>
+        <div id="slowLight" class="bulb"></div>
+        <div id="goLight" class="bulb"></div>
+      </div>
+      
+    
+    
+    </div>
     </div>
   </div>
   </div>
-</div>
-</div>
+  </div>
   <!-- <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script> -->
   <script src="{{ url_for('static', filename='../static/js/logic_v7.js') }}"></script>
   <script src="{{ url_for('static', filename='../static/js/choropleth.js') }}"></script>
