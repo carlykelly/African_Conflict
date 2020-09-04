@@ -54,6 +54,14 @@ var corr_radio_button_flag = 0
 var selected_country_endpointData
 var country_data_to_be_graphed = []
 
+// used to build scatter
+var scatter_label_country_names = []
+var scatter_xAxis_conflict_events = []
+var scatter_yAxis_gdp_total = [] 
+var scatter_yAxis_conflict_fatalities = []
+var scatter_yAxis_corruption_control_percentile = []
+var scatter_yAxis_total_population = []
+
 // Used to build graph
 var xAxis_year = []
 //Conflic
@@ -72,6 +80,77 @@ var yAxis_corruption_control_percentile = []
 var yAxis_government_effectiveness_percentile = []
 var yAxis_ruleoflaw_percentile = []
 
+// vvvvvvvvvvvvvvvvvvvvvvvvvv Build Scatter vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+function buildScatter(){
+  
+  var conflict_trace = {
+    x: scatter_xAxis_conflict_events,
+    y: scatter_yAxis_conflict_fatalities,
+    mode: 'markers',
+    type: 'scatter',
+    name: 'Team A',
+    text: scatter_label_country_names,
+    marker: { size: 12, color:'red' }
+  };
+
+  var ethnic_trace = {
+    x: scatter_xAxis_conflict_events,
+    y: scatter_yAxis_total_population,
+    mode: 'markers',
+    type: 'scatter',
+    name: 'Team A',
+    text: scatter_label_country_names,
+    marker: { size: 12, color:'yellow'}
+  };
+
+  var gdp_trace = {
+    x: scatter_xAxis_conflict_events,
+    y: scatter_yAxis_gdp_total,
+    mode: 'markers',
+    type: 'scatter',
+    name: 'Team A',
+    text: scatter_label_country_names,
+    marker: { size: 12, color:'green' }
+  };
+
+  var corr_trace = {
+    x: scatter_xAxis_conflict_events,
+    y: scatter_yAxis_corruption_control_percentile,
+    mode: 'markers',
+    type: 'scatter',
+    name: 'Team A',
+    text: scatter_label_country_names,
+    marker: { size: 12, color:'blue' }
+  };
+  
+    
+  if(gdp_radio_button_flag == 1){
+    data = [gdp_trace]
+    gdp_radio_button_flag = 0
+  }
+
+  else if(diversity_radio_button_flag == 1){
+    data = [ethnic_trace]
+    diversity_radio_button_flag = 0
+  }  
+
+  else if(corr_radio_button_flag == 1){
+    data = [corr_trace]
+    corr_radio_button_flag = 0
+  }
+
+  else{
+    data = [conflict_trace]
+  }
+  
+  var layout = {
+    title:'Data Labels Hover'
+  };
+  
+  Plotly.newPlot('one', data, layout);
+}
+
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^ Build Scatter ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Build Graphs vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function buildGraph(){
@@ -232,8 +311,9 @@ function getSelectedCountryDataFromEndpoint(){
     d3.json(endpoint).then(endpointData => {
       selected_country = d3.select('#selDataset').node().value
       selected_country_endpointData = endpointData.filter(epd => epd.country_name == selected_country )
+      console.log(selected_country_endpointData)
   
-      selected_country_endpointData.forEach(sced => {
+      selected_country_endpointData.forEach(sced => {    
         xAxis_year.push(sced.year)
         yAxis_conflict_events.push(sced.conflict_events)
         yAxis_conflict_fatalities.push(sced.conflict_fatalities)
@@ -252,13 +332,24 @@ function getSelectedCountryDataFromEndpoint(){
   }
 
   else{
+    console.log('im in the else statment')
     d3.json(endpoint).then(endpointData => {
-      selected_country = d3.select('#selDataset').node().value
-
+      // array.slice(-1)[0] grabs the last item in the array 
+      var all_countires = endpointData.filter(epd => epd.year == endpointData.slice(-1)[0]['year'])
+        all_countires.forEach(cac => {
+        scatter_label_country_names.push(cac.country_name)
+        scatter_xAxis_conflict_events.push(cac.conflict_events)
+        scatter_yAxis_conflict_fatalities.push(cac.conflict_fatalities)
+        scatter_yAxis_corruption_control_percentile.push(cac.corruption_control_percentile)
+        scatter_yAxis_gdp_total.push(cac.gdp_total)
+        scatter_yAxis_total_population.push(cac.total_population)
+      })
+     buildScatter()
     })
 
   }
 }
+
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Retrive data from Endpoint and filter using selected country ^^^^^^^^^^^^^^^^^
 getSelectedCountryDataFromEndpoint()
 
