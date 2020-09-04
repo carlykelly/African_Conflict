@@ -54,74 +54,157 @@ var corr_radio_button_flag = 0
 var selected_country_endpointData
 var country_data_to_be_graphed = []
 
-var xAxis_values = []
-var yAxis_conflict_values = []
-var yAxis_gdp_values = []
-var yAxis_diversity_values = []
-var yaxis_corr_values = []
+// Used to build graph
+var xAxis_year = []
+//Conflic
+var yAxis_conflict_events = []
+var yAxis_conflict_fatalities =[]
+//Economic 
+var yAxis_fdi_inflows_total= []
+var yAxis_gdp_total = []
+var yAxis_gni_total = []
+//Social
+var yAxis_total_population = []
+var yAxis_urban_population = []
+var yAxis_rural_population= []
+//political
+var yAxis_corruption_control_percentile = []
+var yAxis_government_effectiveness_percentile = []
+var yAxis_ruleoflaw_percentile = []
+
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Build Graphs vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function buildGraph(){
-  var first_trace = {
-    x: xAxis_values,
-    y: yAxis_gdp_values,
-    name: `gdp`,
-    type: 'line',
-    line: {color: 'green'
-    },
-    connectgaps: true
-  }
+  console.log(xAxis_year)
+  console.log(yAxis_conflict_events)
 
-  var second_trace = {
-    x: xAxis_values,
-    y: yAxis_conflict_values,
-    name: `conflict`,
-    yaxis: 'y2',
+  var conflict_events_trace = {
+    x: xAxis_year,
+    y: yAxis_conflict_events,
+    name: `conflict events`,
     type: 'bar',
     line: {color: '#ffffff'
     },
     connectgaps: true
   }
 
-  var third_trace = {
-    x: xAxis_values,
-    y: yAxis_diversity_values,
-    name: `diversity`,
-    yaxis: 'y2',
+  var conflict_events_trace = {
+    x: xAxis_year,
+    y: yAxis_conflict_fatalities,
+    name: `conflict fatalities`,
     type: 'line',
-    line: {color: 'yellow'
+    line: {color: 'brown'
     },
     connectgaps: true
   }
 
-  var fourth_trace = {
-    x: xAxis_values,
-    y: yaxis_corr_values,
-    name: `corruption`,
-    yaxis: 'y2',
+  var fdi_inflows_total_trace = {
+    x: xAxis_year,
+    y: yAxis_fdi_inflows_total,
+    name: `fdi inflows`,
+    type: 'line',
+    line: {color: 'green'
+    },
+    connectgaps: true
+  }
+
+  var gdp_total_trace = {
+    x: xAxis_year,
+    y: yAxis_gdp_total,
+    name: `gdp total`,
     type: 'line',
     line: {color: 'blue'
     },
     connectgaps: true
   }
 
+  var gni_total = {
+    x: xAxis_year,
+    y: yAxis_gni_total,
+    name: `gni total`,
+    type: 'line',
+    line: {color: 'red'
+    },
+    connectgaps: true
+  }
+
+  var total_population_trace = {
+    x: xAxis_year,
+    y: yAxis_total_population,
+    name: `total population`,
+    type: 'line',
+    line: {color: 'yellow'
+    },
+    connectgaps: true
+  }
+
+  var urban_population_trace = {
+    x: xAxis_year,
+    y: yAxis_urban_population,
+    name: `urban population`,
+    type: 'line',
+    line: {color: 'green'
+    },
+    connectgaps: true
+  }
+
+  var rural_population_trace = {
+    x: xAxis_year,
+    y: yAxis_rural_population,
+    name: `rural population`,
+    type: 'line',
+    line: {color: 'red'
+    },
+    connectgaps: true
+  }
+
+  var corruption_control_percentile_trace = {
+    x: xAxis_year,
+    y: yAxis_corruption_control_percentile,
+    name: `corr control perct`,
+    type: 'line',
+    line: {color: 'blue'
+    },
+    connectgaps: true
+  }
+
+  var government_effectiveness_percentile_trace = {
+    x: xAxis_year,
+    y: yAxis_government_effectiveness_percentile,
+    name: `govt effectiveness perct`,
+    type: 'line',
+    line: {color: 'red'
+    },
+    connectgaps: true
+  }
+
+  var ruleoflaw_percentile_trace = {
+    x: xAxis_year,
+    y: yAxis_ruleoflaw_percentile,
+    name: `rule of law perct`,
+    type: 'line',
+    line: {color: 'black'
+    },
+    connectgaps: true
+  }
+
   if(gdp_radio_button_flag == 1){
-    data = [first_trace]
+    data = [fdi_inflows_total_trace,gdp_total_trace,gni_total]
     gdp_radio_button_flag = 0
   }
 
   else if(diversity_radio_button_flag == 1){
-    data = [third_trace]
+    data = [total_population_trace,urban_population_trace,rural_population_trace]
     diversity_radio_button_flag = 0
   }  
 
   else if(corr_radio_button_flag == 1){
-    data = [fourth_trace]
+    data = [corruption_control_percentile_trace, government_effectiveness_percentile_trace, ruleoflaw_percentile_trace]
     corr_radio_button_flag = 0
   }
 
   else{
-    data = [second_trace,first_trace,third_trace,fourth_trace]
+    data = [conflict_events_trace]
   }
 
   var layout = {
@@ -138,7 +221,7 @@ function buildGraph(){
     connectgaps: true
   };
   var config2 = {responsive : true}
-  Plotly.newPlot("one", data, layout, config2)
+  Plotly.react ("one", data, layout, config2)
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Build Graphs ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -149,19 +232,20 @@ function getSelectedCountryDataFromEndpoint(){
     d3.json(endpoint).then(endpointData => {
       selected_country = d3.select('#selDataset').node().value
       selected_country_endpointData = endpointData.filter(epd => epd.country_name == selected_country )
-      //
-      xAxis_values = []
-      yAxis_conflict_values = []
-      yAxis_gdp_values = []
-      yAxis_diversity_values = []
-      yaxis_corr_values = []
   
       selected_country_endpointData.forEach(sced => {
-        xAxis_values.push(sced.year)
-        yAxis_conflict_values.push(sced.conflict_events)
-        yAxis_gdp_values.push(sced.gdp_total)
-        yAxis_diversity_values.push(sced.ethnic_score)
-        yaxis_corr_values.push(sced.corruption_control_estimate)
+        xAxis_year.push(sced.year)
+        yAxis_conflict_events.push(sced.conflict_events)
+        yAxis_conflict_fatalities.push(sced.conflict_fatalities)
+        yAxis_fdi_inflows_total.push(sced.fdi_inflows_total)
+        yAxis_gdp_total.push(sced.gdp_total)
+        yAxis_gni_total.push(sced.gni_total)
+        yAxis_total_population.push(sced.total_population)
+        yAxis_urban_population.push(sced.urban_population)
+        yAxis_rural_population.push(sced.rural_population)
+        yAxis_corruption_control_percentile.push(sced.corruption_control_percentile)
+        yAxis_government_effectiveness_percentile.push(sced.government_effectiveness_percentile)
+        yAxis_ruleoflaw_percentile.push(sced.ruleoflaw_percentile)
       })
       buildGraph()
     })
@@ -170,7 +254,6 @@ function getSelectedCountryDataFromEndpoint(){
   else{
     d3.json(endpoint).then(endpointData => {
       selected_country = d3.select('#selDataset').node().value
-      console.log(endpointData)
 
     })
 
@@ -286,8 +369,6 @@ function mouseout_func(event) {
                     d3.select('#selDataset').node().value = selected_country 
 
                     makeOutline(country_name)
- 
-            
                 },    
 
             });
@@ -592,9 +673,6 @@ function mouseout_func(event) {
             outline.addTo(myMap)
             }
            
-            
-            
-
           if(eventlayer.name == 'GDP Growth Rate'){
             gdp_radio_button_flag = 1
             legendCase.addTo(myMap)
