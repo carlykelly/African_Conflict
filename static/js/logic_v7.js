@@ -399,7 +399,7 @@ function createNews(country){
     var marquee = panel.append('marquee');
     for (i = 0; i < 5; i++){
       var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-      var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `)                           
+      var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `).attr('target',"_blank")                           
         }                 
    }
 );   
