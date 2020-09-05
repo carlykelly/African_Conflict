@@ -1,15 +1,3 @@
-// html_v6, app_v6.py
-//NOTES:
-
-//To do:
-// - link drop down to map highlight
-// - ability to select fdi year to be used for scatter plot & select number of year in the future to visualize fdi affect on coutnry
-// - ability to plot a metric using a selection box 
-
-// event squence:
-// open page > africa map > you select a country > FDI barchart > select a checkbox > add a line to the >
-// > bargraph to that represents the checkbox option.  
-
 // Process flow scenarios legend:
 //    1) initial page load: 
 //    2) click on country from drop down > DDEL > FEPJDD > FEPJ > BG & BSS > country graph & ticker displayed on page
@@ -18,7 +6,6 @@
 //    5) click on SSA scatter graph buttons:
 
 var endpoint = '/ultimate'
-var selected_country = 'All African Countries'
 
 // Creating map object
 
@@ -46,13 +33,15 @@ var baseMaps
   $('.index').hide()
   $('.scatter').hide()
 
-  
+var selected_country = 'All African Countries'
+
+var conflict_radio_button_flag = 1
 var gdp_radio_button_flag = 0
 var diversity_radio_button_flag = 0
 var corr_radio_button_flag = 0
 
 var selected_country_endpointData
-var country_data_to_be_graphed = []
+// var country_data_to_be_graphed = []
 
 // used to build scatter
 var scatter_label_country_names = []
@@ -126,51 +115,51 @@ function buildScatter(){
     
   if(gdp_radio_button_flag == 1){
     data = [gdp_trace]
-    gdp_radio_button_flag = 0
+    // gdp_radio_button_flag = 0
   }
 
   else if(diversity_radio_button_flag == 1){
     data = [ethnic_trace]
-    diversity_radio_button_flag = 0
+    // diversity_radio_button_flag = 0
   }  
 
   else if(corr_radio_button_flag == 1){
     data = [corr_trace]
-    corr_radio_button_flag = 0
+    // corr_radio_button_flag = 0
   }
 
-  else{
+  else if(conflict_radio_button_flag == 1){
     data = [conflict_trace]
+    // conflict_radio_button_flag = 0
   }
   
   var layout = {
     title:'Data Labels Hover'
   };
   
-  Plotly.newPlot('one', data, layout);
+  Plotly.react('one', data, layout);
 }
 
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^ Build Scatter ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Build Graphs vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function buildGraph(){
-  console.log(xAxis_year)
-  console.log(yAxis_conflict_events)
-
+  
   var conflict_events_trace = {
     x: xAxis_year,
     y: yAxis_conflict_events,
     name: `conflict events`,
     type: 'bar',
-    line: {color: '#ffffff'
+    line: {color: 'red'
     },
     connectgaps: true
   }
 
-  var conflict_events_trace = {
+  var conflict_fatalities_trace = {
     x: xAxis_year,
     y: yAxis_conflict_fatalities,
     name: `conflict fatalities`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'brown'
     },
@@ -181,6 +170,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_fdi_inflows_total,
     name: `fdi inflows`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'green'
     },
@@ -191,6 +181,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_gdp_total,
     name: `gdp total`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'blue'
     },
@@ -201,6 +192,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_gni_total,
     name: `gni total`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'red'
     },
@@ -211,6 +203,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_total_population,
     name: `total population`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'yellow'
     },
@@ -221,6 +214,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_urban_population,
     name: `urban population`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'green'
     },
@@ -231,6 +225,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_rural_population,
     name: `rural population`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'red'
     },
@@ -241,6 +236,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_corruption_control_percentile,
     name: `corr control perct`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'blue'
     },
@@ -251,6 +247,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_government_effectiveness_percentile,
     name: `govt effectiveness perct`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'red'
     },
@@ -261,6 +258,7 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_ruleoflaw_percentile,
     name: `rule of law perct`,
+    yaxis: 'y2',
     type: 'line',
     line: {color: 'black'
     },
@@ -268,22 +266,23 @@ function buildGraph(){
   }
 
   if(gdp_radio_button_flag == 1){
-    data = [fdi_inflows_total_trace,gdp_total_trace,gni_total]
-    gdp_radio_button_flag = 0
+    data = [conflict_events_trace,fdi_inflows_total_trace,gdp_total_trace,gni_total]
+    // gdp_radio_button_flag = 0
   }
 
   else if(diversity_radio_button_flag == 1){
-    data = [total_population_trace,urban_population_trace,rural_population_trace]
-    diversity_radio_button_flag = 0
+    data = [conflict_events_trace,total_population_trace,urban_population_trace,rural_population_trace]
+    // diversity_radio_button_flag = 0
   }  
 
   else if(corr_radio_button_flag == 1){
-    data = [corruption_control_percentile_trace, government_effectiveness_percentile_trace, ruleoflaw_percentile_trace]
-    corr_radio_button_flag = 0
+    data = [conflict_events_trace,corruption_control_percentile_trace, government_effectiveness_percentile_trace, ruleoflaw_percentile_trace]
+    // corr_radio_button_flag = 0
   }
 
-  else{
-    data = [conflict_events_trace]
+  else if(conflict_radio_button_flag == 1){
+    data = [conflict_events_trace,conflict_fatalities_trace]
+    // conflict_radio_button_flag = 0
   }
 
   var layout = {
@@ -304,14 +303,42 @@ function buildGraph(){
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Build Graphs ^^^^^^^^^^^^^^^^^^^^^^^^
 
+function clearAxisArrays(){
+  // used to build scatter
+  scatter_label_country_names = []
+  scatter_xAxis_conflict_events = []
+  scatter_yAxis_gdp_total = [] 
+  scatter_yAxis_conflict_fatalities = []
+  scatter_yAxis_corruption_control_percentile = []
+  scatter_yAxis_total_population = []
+
+  // Used to build graph
+  xAxis_year = []
+  //Conflic
+  yAxis_conflict_events = []
+  yAxis_conflict_fatalities =[]
+  //Economic 
+  yAxis_fdi_inflows_total= []
+  yAxis_gdp_total = []
+  yAxis_gni_total = []
+  //Social
+  yAxis_total_population = []
+  yAxis_urban_population = []
+  yAxis_rural_population= []
+  //political
+  yAxis_corruption_control_percentile = []
+  yAxis_government_effectiveness_percentile = []
+  yAxis_ruleoflaw_percentile = []
+}
+
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv Retrive data from Endpoint and filter using selected country vvvvvvvvvvvvvv     
 function getSelectedCountryDataFromEndpoint(){
+  clearAxisArrays()
   if(selected_country != 'All African Countries'){
     d3.json(endpoint).then(endpointData => {
-      selected_country = d3.select('#selDataset').node().value
+      console.log(endpointData)
       selected_country_endpointData = endpointData.filter(epd => epd.country_name == selected_country )
-      console.log(selected_country_endpointData)
   
       selected_country_endpointData.forEach(sced => {    
         xAxis_year.push(sced.year)
@@ -331,8 +358,7 @@ function getSelectedCountryDataFromEndpoint(){
     })
   }
 
-  else{
-    console.log('im in the else statment')
+  else if(selected_country == 'All African Countries'){
     d3.json(endpoint).then(endpointData => {
       // array.slice(-1)[0] grabs the last item in the array 
       var all_countires = endpointData.filter(epd => epd.year == endpointData.slice(-1)[0]['year'])
@@ -353,9 +379,11 @@ function getSelectedCountryDataFromEndpoint(){
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Retrive data from Endpoint and filter using selected country ^^^^^^^^^^^^^^^^^
 getSelectedCountryDataFromEndpoint()
 
-d3.select('#selDataset').on('change',getSelectedCountryDataFromEndpoint)
-
-
+function setSelectedCountryValue(){ 
+  selected_country = d3.select('#selDataset').node().value
+  getSelectedCountryDataFromEndpoint()
+}
+d3.select('#selDataset').on('change',setSelectedCountryValue)
 
  
   // Grab data with d3
@@ -766,6 +794,9 @@ function mouseout_func(event) {
            
           if(eventlayer.name == 'GDP Growth Rate'){
             gdp_radio_button_flag = 1
+            diversity_radio_button_flag = 0
+            conflict_radio_button_flag = 0
+            corr_radio_button_flag = 0
             legendCase.addTo(myMap)
             if(selected_country != ''){
               getSelectedCountryDataFromEndpoint()
@@ -774,6 +805,9 @@ function mouseout_func(event) {
 
           if(eventlayer.name == 'Diversity Rate'){
             diversity_radio_button_flag = 1
+            gdp_radio_button_flag = 0
+            conflict_radio_button_flag = 0
+            corr_radio_button_flag = 0
             legend.addTo(myMap)
             if(selected_country != ''){
               getSelectedCountryDataFromEndpoint()
@@ -781,6 +815,10 @@ function mouseout_func(event) {
           }
 
           if(eventlayer.name == 'Instances of Conflict'){
+            gdp_radio_button_flag = 0
+            diversity_radio_button_flag = 0
+            conflict_radio_button_flag = 1
+            corr_radio_button_flag = 0            
             legendMort.addTo(myMap)
             if(selected_country != ''){
               getSelectedCountryDataFromEndpoint()
@@ -788,7 +826,10 @@ function mouseout_func(event) {
           }
 
           if(eventlayer.name == 'Corruption Score'){
-            corr_radio_button_flag = 1
+            gdp_radio_button_flag = 0
+            diversity_radio_button_flag = 0
+            conflict_radio_button_flag = 0
+            corr_radio_button_flag = 1            
             legendCorupt.addTo(myMap)
             if(selected_country != ''){
               getSelectedCountryDataFromEndpoint()
@@ -906,10 +947,4 @@ Highcharts.chart('container', {
 
   } 
 ]
-});
-
-
-
-
-
- 
+});  
