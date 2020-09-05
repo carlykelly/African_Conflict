@@ -23,16 +23,7 @@ var baseMaps
   var corruption
 
   var scatter_array = [] // array will contain the above objects. will be used to build the scatter graph
-
-  var clickflag = 0 /// testing click envent gold
-  var old_layer = '' // testing click envent gold
-
-  var polygon_country_indx // to identify the countries polygon id
-
   
-  $('.index').hide()
-  $('.scatter').hide()
-
 var selected_country = 'All African Countries'
 
 var conflict_radio_button_flag = 1
@@ -41,7 +32,6 @@ var diversity_radio_button_flag = 0
 var corr_radio_button_flag = 0
 
 var selected_country_endpointData
-// var country_data_to_be_graphed = []
 
 // used to build scatter
 var scatter_label_country_names = []
@@ -479,15 +469,13 @@ function mouseout_func(event) {
                 mouseout: mouseout_func,
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
-
                     country_name = event.target.feature.properties.name
-
                     createNews(country_name)
-
                     selected_country = feature.properties.name
                     d3.select('#selDataset').node().value = selected_country 
-
                     makeOutline(country_name)
+                    setSelectedCountryValue()
+
                 },    
 
             });
@@ -556,13 +544,10 @@ function mouseout_func(event) {
                 click: function click_func(event) {
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-
                     createNews(country_name)
-
                     d3.select('#selDataset').node().value = selected_country 
                     makeOutline(country_name)
-  
-            
+                    setSelectedCountryValue()
                 },    
 
             });
@@ -628,16 +613,12 @@ function mouseout_func(event) {
                 mouseout: mouseout_func,
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
                 click: function click_func(event) {
-            
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-
                     createNews(country_name)
-
                     d3.select('#selDataset').node().value = selected_country 
-
                     makeOutline(country_name)
-            
+                    setSelectedCountryValue()            
                 },    
 
             });
@@ -702,17 +683,13 @@ function mouseout_func(event) {
                 // When the cursor no longer hovers over a map feature - when the mouseout event occurs - the feature's opacity reverts back to 50%
                 mouseout:mouseout_func,
                 // (MEL) Map listener: when a country is selected from the map this is activiated.            
-                click: function click_func(event) {
-    
+                click: function click_func(event) {   
                     selected_country = feature.properties.name
                     country_name = event.target.feature.properties.name
-
                     createNews(country_name)
-
-
                     d3.select('#selDataset').node().value = selected_country 
-
                     makeOutline(country_name)
+                    setSelectedCountryValue()
                 },    
 
             });
@@ -799,8 +776,7 @@ function mouseout_func(event) {
             corr_radio_button_flag = 0
             legendCase.addTo(myMap)
             if(selected_country != ''){
-              getSelectedCountryDataFromEndpoint()
-            }
+              setSelectedCountryValue()            }
           }
 
           if(eventlayer.name == 'Diversity Rate'){
@@ -810,8 +786,7 @@ function mouseout_func(event) {
             corr_radio_button_flag = 0
             legend.addTo(myMap)
             if(selected_country != ''){
-              getSelectedCountryDataFromEndpoint()
-            }
+              setSelectedCountryValue()            }
           }
 
           if(eventlayer.name == 'Instances of Conflict'){
@@ -821,8 +796,7 @@ function mouseout_func(event) {
             corr_radio_button_flag = 0            
             legendMort.addTo(myMap)
             if(selected_country != ''){
-              getSelectedCountryDataFromEndpoint()
-            }
+              setSelectedCountryValue()            }
           }
 
           if(eventlayer.name == 'Corruption Score'){
@@ -832,8 +806,7 @@ function mouseout_func(event) {
             corr_radio_button_flag = 1            
             legendCorupt.addTo(myMap)
             if(selected_country != ''){
-              getSelectedCountryDataFromEndpoint()
-            }
+              setSelectedCountryValue()            }
           }
         })
 
