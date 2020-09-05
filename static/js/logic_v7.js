@@ -329,9 +329,11 @@ function getSelectedCountryDataFromEndpoint(){
     d3.json(endpoint).then(endpointData => {
       console.log(endpointData)
       selected_country_endpointData = endpointData.filter(epd => epd.country_name == selected_country )
+      selected_country_endpointData = selected_country_endpointData.sort((a,b)=> a.year - b.year)
   
       selected_country_endpointData.forEach(sced => {    
         xAxis_year.push(sced.year)
+        // xAxis_year = xAxis_year.sort((a, b) => a - b)
         yAxis_conflict_events.push(sced.conflict_events)
         yAxis_conflict_fatalities.push(sced.conflict_fatalities)
         yAxis_fdi_inflows_total.push(sced.fdi_inflows_total)
