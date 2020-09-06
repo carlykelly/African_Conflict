@@ -70,7 +70,7 @@ function buildScatter(){
     type: 'scatter',
     name: 'Team A',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'red' }
+    marker: { size: 12, color:'indianred' }
   };
 
   var ethnic_trace = {
@@ -80,7 +80,7 @@ function buildScatter(){
     type: 'scatter',
     name: 'Team A',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'yellow'}
+    marker: { size: 12, color:'goldenrod'}
   };
 
   var gdp_trace = {
@@ -90,7 +90,7 @@ function buildScatter(){
     type: 'scatter',
     name: 'Team A',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'green' }
+    marker: { size: 12, color:'2B7A78' }
   };
 
   var corr_trace = {
@@ -100,33 +100,53 @@ function buildScatter(){
     type: 'scatter',
     name: 'Team A',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'blue' }
+    marker: { size: 12, color:'#000080' }
   };
   
     
   if(gdp_radio_button_flag == 1){
     data = [gdp_trace]
+    layout = {
+      title:'African GPD vs. Conflict',
+      xaxis: {title: "Country Conflict Events"},
+      yaxis: {title: "Country Total GDP"}
+    };
     // gdp_radio_button_flag = 0
   }
 
   else if(diversity_radio_button_flag == 1){
     data = [ethnic_trace]
+    layout = {
+      title:'African Population vs. Conflict',
+      xaxis: {title: "Country Conflict Events"},
+      yaxis: {title: "Country Total Population"}
+    };
     // diversity_radio_button_flag = 0
   }  
 
   else if(corr_radio_button_flag == 1){
     data = [corr_trace]
+    layout = {
+      title:'African Corruption vs. Conflict',
+      xaxis: {title: "Country Conflict Events"},
+      yaxis: {title: "Country Corruption Control %"}
+    };
     // corr_radio_button_flag = 0
   }
 
   else if(conflict_radio_button_flag == 1){
     data = [conflict_trace]
+    layout = {
+      title:'Continent Conflict Comparison',
+      xaxis: {title: "Country Conflict Events"},
+      yaxis: {title: "Country Fatalities"}
+    };
     // conflict_radio_button_flag = 0
   }
   
-  var layout = {
-    title:'Data Labels Hover'
-  };
+  // var layout = {
+  //   title:'Continent Conflict Comparison'
+  // };
   
   Plotly.react('one', data, layout);
 }
