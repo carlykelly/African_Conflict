@@ -826,16 +826,21 @@ function mouseout_func(event) {
         });
             legendMort.addTo(myMap);
 
+            
+
           L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
             attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
             tileSize: 512,
             maxZoom: 18,
             zoomOffset: -1,
             id: "mapbox/light-v9",
+            scrollWheelZoom: false,
             accessToken: 'sk.eyJ1IjoiY2FybHlma2VsbHkiLCJhIjoiY2tkZ3U4Z3B3Mmx6dDJ4cG16Y2l6eWQ1bCJ9.ewwhVCi9nw45LL2iNZ1hbA'
           }).addTo(myMap);
 
             L.control.layers(baseMaps, null, {collapsed:false}).addTo(myMap);
+
+            myMap.scrollWheelZoom.disable();
 
          myMap.on('baselayerchange',function(eventlayer){
           this.removeControl(legend)
