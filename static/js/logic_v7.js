@@ -1008,7 +1008,7 @@ d3.select("#corr-chkbx").on('change',handleChange)
 Highcharts.chart('container', {
   chart: {
       type: 'packedbubble',
-      height: '100%'
+      height: '50%'
   },
   title: {
       text: 'Feature Importance in Predicting Conflict'
@@ -1019,8 +1019,8 @@ Highcharts.chart('container', {
   },
   plotOptions: {
       packedbubble: {
-          minSize: '20%',
-          maxSize: '100%',
+          minSize: '40%',
+          maxSize: '200%',
           zMin: 0,
           zMax: 0.4,
           layoutAlgorithm: {
