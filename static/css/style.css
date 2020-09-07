@@ -45,7 +45,16 @@
     background-color:#7b0b45 ;
   }
   
-  #map,
+  #one {
+    height: 500px;
+  }
+
+  #map{
+    height: 500px;
+    position: relative
+  }
+
+
   body,
   html {
     height: 100%;
