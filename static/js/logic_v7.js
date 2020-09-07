@@ -57,6 +57,10 @@ var yAxis_fdi_gdp_per = []
 var yAxis_total_population = []
 var yAxis_urban_population = []
 var yAxis_rural_population= []
+var yAxis_total_population_growth = []
+var yAxis_rural_population_growth = []
+var yAxis_urban_population_growth = []
+var yAxis_ethnic_score = []
 //political
 var yAxis_corruption_control_percentile = []
 var yAxis_government_effectiveness_percentile = []
@@ -204,7 +208,7 @@ function buildGraph(){
     name: `FDI as a Percentage of GDP`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'green'
+    line: {color: 'goldenrod'
     },
     connectgaps: true
   }
@@ -236,7 +240,7 @@ function buildGraph(){
     y: yAxis_total_population,
     name: `Total Population`,
     yaxis: 'y2',
-    type: 'line',
+    mode: 'lines+markers',
     line: {color: 'yellow'
     },
     connectgaps: true
@@ -247,7 +251,7 @@ function buildGraph(){
     y: yAxis_urban_population,
     name: `Urban Population`,
     yaxis: 'y2',
-    type: 'line',
+    mode: 'lines+markers',
     line: {color: 'green'
     },
     connectgaps: true
@@ -258,12 +262,59 @@ function buildGraph(){
     y: yAxis_rural_population,
     name: `Rural Population`,
     yaxis: 'y2',
-    type: 'line',
+    mode: 'lines+markers',
     line: {color: 'red'
     },
     connectgaps: true
   }
 
+
+  //
+  var total_population_growth_trace = {
+    x: xAxis_year,
+    y: yAxis_total_population_growth,
+    name: `Total Population Growth %`,
+    yaxis: 'y2',
+    type: 'line',
+    line: {color: 'black'
+    },
+    connectgaps: true
+  }
+
+  var urban_population_growth_trace = {
+    x: xAxis_year,
+    y: yAxis_urban_population_growth,
+    name: `Urban Population Growth %`,
+    yaxis: 'y2',
+    type: 'line',
+    line: {color: '2B7A78'
+    },
+    connectgaps: true
+  }
+
+  var rural_population_growth_trace = {
+    x: xAxis_year,
+    y: yAxis_rural_population_growth,
+    name: `Rural Population Growth %`,
+    yaxis: 'y2',
+    type: 'line',
+    line: {color: '#000080'
+    },
+    connectgaps: true
+  }
+
+
+  var ethnic_score_trace = {
+    x: xAxis_year,
+    y: yAxis_ethnic_score,
+    name: `Ethnic Score`,
+    yaxis: 'y2',
+    type: 'line',
+    line: {color: 'goldenrod'
+    },
+    connectgaps: true
+  }
+//
   var corruption_control_percentile_trace = {
     x: xAxis_year,
     y: yAxis_corruption_control_percentile,
@@ -304,7 +355,7 @@ function buildGraph(){
       yaxis: {title: 'Conflict Events'},
       color:'black',
       yaxis2: {
-        title: 'GDP Growth %',
+        title: 'GDP Growth % / FDI % of GDP',
         overlaying: 'y',
         side: 'right'
       },
@@ -318,21 +369,21 @@ function buildGraph(){
   }
 
   else if(diversity_radio_button_flag == 1){
-    data = [conflict_events_trace,total_population_trace,urban_population_trace,rural_population_trace];
+    data = [conflict_events_trace, total_population_trace, rural_population_trace, urban_population_trace];
     layout = {
       title:  `${title_country_name[0]} Diversity Graph`,
-      yaxis: {title: 'Population'},
+      yaxis: {title: 'Conflict Events',
+      gridcolor: 'black'},
       color:'black',
+      plot_bgcolor: 'gray',
+      paper_bgcolor: 'goldenrod',
       yaxis2: {
-        title: 'Fatalites',
+        title: 'Population',
         overlaying: 'y',
         side: 'right'
       },
       showlegend: true,
-        legend: {"orientation": "h",
-        xtextoffset: -1, // for all items OR [0,0,-1, /* .. */] to offset each item independently 
-        ytextoffset: 0   // similarly
-   },
+        legend: {"orientation": "h",},
       connectgaps: true
 
     }
@@ -420,6 +471,10 @@ function clearAxisArrays(){
   yAxis_total_population = []
   yAxis_urban_population = []
   yAxis_rural_population= []
+  yAxis_total_population_growth = []
+  yAxis_rural_population_growth = []
+  yAxis_urban_population_growth = []
+  yAxis_ethnic_score = []
   //political
   yAxis_corruption_control_percentile = []
   yAxis_government_effectiveness_percentile = []
@@ -449,6 +504,12 @@ function getSelectedCountryDataFromEndpoint(){
         yAxis_total_population.push(sced.total_population)
         yAxis_urban_population.push(sced.urban_population)
         yAxis_rural_population.push(sced.rural_population)
+        yAxis_total_population_growth.push(sced.population_growth_annual_per)
+        yAxis_rural_population_growth.push(sced.rural_population_growth)
+        yAxis_urban_population_growth.push(sced.urban_population_growth)
+        yAxis_ethnic_score.push(sced.ethnic_score) 
+
+
         yAxis_corruption_control_percentile.push(sced.corruption_control_percentile)
         yAxis_government_effectiveness_percentile.push(sced.government_effectiveness_percentile)
         yAxis_ruleoflaw_percentile.push(sced.ruleoflaw_percentile)
