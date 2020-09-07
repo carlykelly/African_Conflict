@@ -50,7 +50,9 @@ var yAxis_conflict_fatalities =[]
 //Economic 
 var yAxis_fdi_inflows_total= []
 var yAxis_gdp_total = []
+var yAxis_gdp_per = []
 var yAxis_gni_total = []
+var yAxis_fdi_gdp_per = []
 //Social
 var yAxis_total_population = []
 var yAxis_urban_population = []
@@ -68,7 +70,7 @@ function buildScatter(){
     y: scatter_yAxis_conflict_fatalities,
     mode: 'markers',
     type: 'scatter',
-    name: 'Team A',
+    name: 'Country',
     text: scatter_label_country_names,
     marker: { size: 12, color:'indianred' }
   };
@@ -78,7 +80,7 @@ function buildScatter(){
     y: scatter_yAxis_total_population,
     mode: 'markers',
     type: 'scatter',
-    name: 'Team A',
+    name: 'Country',
     text: scatter_label_country_names,
     marker: { size: 12, color:'goldenrod'}
   };
@@ -88,7 +90,7 @@ function buildScatter(){
     y: scatter_yAxis_gdp_total,
     mode: 'markers',
     type: 'scatter',
-    name: 'Team A',
+    name: 'Country',
     text: scatter_label_country_names,
     marker: { size: 12, color:'2B7A78' }
   };
@@ -98,7 +100,7 @@ function buildScatter(){
     y: scatter_yAxis_corruption_control_percentile,
     mode: 'markers',
     type: 'scatter',
-    name: 'Team A',
+    name: 'Country',
     text: scatter_label_country_names,
     marker: { size: 12, color:'#000080' }
   };
@@ -109,7 +111,9 @@ function buildScatter(){
     layout = {
       title:'African GPD vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
-      yaxis: {title: "Country Total GDP"}
+      yaxis: {title: "Country Total GDP"},
+      showlegend: true,
+      legend: {"orientation": "h"} 
     };
     // gdp_radio_button_flag = 0
   }
@@ -119,7 +123,9 @@ function buildScatter(){
     layout = {
       title:'African Population vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
-      yaxis: {title: "Country Total Population"}
+      yaxis: {title: "Country Total Population"},
+      // showlegend: true,
+      // legend: {"orientation" : "h"}
     };
     // diversity_radio_button_flag = 0
   }  
@@ -129,7 +135,9 @@ function buildScatter(){
     layout = {
       title:'African Corruption vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
-      yaxis: {title: "Country Corruption Control %"}
+      yaxis: {title: "Country Corruption Control %"},
+      // showlegend: true,
+      // legend: {"orientation" : "h"}
     };
     // corr_radio_button_flag = 0
   }
@@ -139,7 +147,9 @@ function buildScatter(){
     layout = {
       title:'Continent Conflict Comparison',
       xaxis: {title: "Country Conflict Events"},
-      yaxis: {title: "Country Fatalities"}
+      yaxis: {title: "Country Fatalities"},
+      // showlegend: true,
+      // legend: {"orientation" : "h" },
     };
     // conflict_radio_button_flag = 0
   }
@@ -161,7 +171,7 @@ function buildGraph(){
     y: yAxis_conflict_events,
     name: `Conflict Events`,
     type: 'bar',
-    marker: {color: '#CC0000'
+    marker: {color: 'indianred'
     },
     connectgaps: true
   }
@@ -169,10 +179,10 @@ function buildGraph(){
   var conflict_fatalities_trace = {
     x: xAxis_year,
     y: yAxis_conflict_fatalities,
-    name: `Conflict fatalities`,
+    name: `Conflict Fatalities`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'brown'
+    line: {color: 'black'
     },
     connectgaps: true
   }
@@ -181,6 +191,17 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_fdi_inflows_total,
     name: `FDI inflows`,
+    yaxis: 'y1',
+    type: 'line',
+    line: {color: 'green'
+    },
+    connectgaps: true
+  }
+
+  var fdi_inflows_gdp_trace = {
+    x: xAxis_year,
+    y: yAxis_fdi_gdp_per,
+    name: `FDI as a Percentage of GDP`,
     yaxis: 'y2',
     type: 'line',
     line: {color: 'green'
@@ -188,13 +209,13 @@ function buildGraph(){
     connectgaps: true
   }
 
-  var gdp_total_trace = {
+  var gdp_per_trace = {
     x: xAxis_year,
-    y: yAxis_gdp_total,
-    name: `GDP total`,
+    y: yAxis_gdp_per,
+    name: `GDP Growth %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'blue'
+    line: {color: '2B7A78'
     },
     connectgaps: true
   }
@@ -202,7 +223,7 @@ function buildGraph(){
   var gni_total = {
     x: xAxis_year,
     y: yAxis_gni_total,
-    name: `GNI total`,
+    name: `GNI Total`,
     yaxis: 'y2',
     type: 'line',
     line: {color: 'red'
@@ -235,7 +256,7 @@ function buildGraph(){
   var rural_population_trace = {
     x: xAxis_year,
     y: yAxis_rural_population,
-    name: `Rural population`,
+    name: `Rural Population`,
     yaxis: 'y2',
     type: 'line',
     line: {color: 'red'
@@ -277,18 +298,19 @@ function buildGraph(){
   }
 
   if(gdp_radio_button_flag == 1){
-    data = [conflict_events_trace,fdi_inflows_total_trace,gdp_total_trace,gni_total];
+    data = [conflict_events_trace, gdp_per_trace, fdi_inflows_gdp_trace];
     layout = {
       title:  `${title_country_name[0]} GDP Graph`,
       yaxis: {title: 'Conflict Events'},
       color:'black',
       yaxis2: {
-        title: 'GDP',
+        title: 'GDP Growth %',
         overlaying: 'y',
         side: 'right'
       },
       showlegend: true,
         legend: {"orientation": "h"},
+   
       connectgaps: true
 
     }
@@ -307,7 +329,10 @@ function buildGraph(){
         side: 'right'
       },
       showlegend: true,
-        legend: {"orientation": "h"},
+        legend: {"orientation": "h",
+        xtextoffset: -1, // for all items OR [0,0,-1, /* .. */] to offset each item independently 
+        ytextoffset: 0   // similarly
+   },
       connectgaps: true
 
     }
@@ -388,7 +413,9 @@ function clearAxisArrays(){
   //Economic 
   yAxis_fdi_inflows_total= []
   yAxis_gdp_total = []
+  yAxis_gdp_per = []
   yAxis_gni_total = []
+  yAxis_fdi_gdp_per = []
   //Social
   yAxis_total_population = []
   yAxis_urban_population = []
@@ -407,6 +434,7 @@ function getSelectedCountryDataFromEndpoint(){
     d3.json(endpoint).then(endpointData => {
       selected_country_endpointData = endpointData.filter(epd => epd.country_name == selected_country )
       selected_country_endpointData = selected_country_endpointData.sort((a,b)=> a.year - b.year)
+      console.log(selected_country_endpointData)
   
       selected_country_endpointData.forEach(sced => { 
         title_country_name.push(sced.country_name)   
@@ -414,6 +442,8 @@ function getSelectedCountryDataFromEndpoint(){
         yAxis_conflict_events.push(sced.conflict_events)
         yAxis_conflict_fatalities.push(sced.conflict_fatalities)
         yAxis_fdi_inflows_total.push(sced.fdi_inflows_total)
+        yAxis_gdp_per.push(sced.gdp_growth_per)
+        yAxis_fdi_gdp_per.push(sced.fdi_inflows_gdp)
         yAxis_gdp_total.push(sced.gdp_total)
         yAxis_gni_total.push(sced.gni_total)
         yAxis_total_population.push(sced.total_population)
