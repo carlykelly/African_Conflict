@@ -1,0 +1,7 @@
+Colors:
+
+#cc6602 - Burnt Orange
+#ffdd62 - Yellow
+#ffed9b - Dull yellow
+#74713e- Olive Green
+#6d2705 - Dark Sandy
