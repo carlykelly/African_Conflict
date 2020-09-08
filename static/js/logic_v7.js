@@ -46,7 +46,7 @@ var scatter_yAxis_total_population = []
 // Used to build graph
 title_country_name = []
 var xAxis_year = []
-//Conflic
+//Conflict
 var yAxis_conflict_events = []
 var yAxis_conflict_fatalities =[]
 //Economic 
@@ -135,8 +135,10 @@ function buildScatter(){
       title:'African GPD vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Total GDP"},
-      showlegend: true,
-      legend: {"orientation": "h"} 
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
+      // showlegend: true,
+      // legend: {"orientation": "h"} 
     };
     // gdp_radio_button_flag = 0
   }
@@ -147,6 +149,8 @@ function buildScatter(){
       title:'African Population vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Total Population"},
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       // showlegend: true,
       // legend: {"orientation" : "h"}
     };
@@ -159,6 +163,8 @@ function buildScatter(){
       title:'African Corruption vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Corruption Control %"},
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       // showlegend: true,
       // legend: {"orientation" : "h"}
     };
@@ -171,6 +177,8 @@ function buildScatter(){
       title:'Continent Conflict Comparison',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Fatalities"},
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       // showlegend: true,
       // legend: {"orientation" : "h" },
     };
@@ -373,6 +381,8 @@ function buildGraph(){
       title:  `${title_country_name[0]} GDP Graph`,
       yaxis: {title: 'Conflict Events'},
       color:'black',
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       yaxis2: {
         title: 'GDP Growth % / FDI % of GDP',
         overlaying: 'y',
@@ -394,8 +404,8 @@ function buildGraph(){
       yaxis: {title: 'Conflict Events',
       gridcolor: 'black'},
       color:'black',
-      plot_bgcolor: 'gray',
-      paper_bgcolor: 'goldenrod',
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       yaxis2: {
         title: 'Population',
         overlaying: 'y',
@@ -415,6 +425,8 @@ function buildGraph(){
       title:  `${title_country_name[0]} Corruption Graph`,
       yaxis: {title: 'Corruption Score'},
       color:'black',
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       yaxis2: {
         title: 'Rule of Law',
         overlaying: 'y',
@@ -434,6 +446,8 @@ function buildGraph(){
       title:  `${title_country_name[0]} Conflict Graph`,
       yaxis: {title: 'Conflict Events'},
       color:'black',
+      paper_bgcolor: '#cad2d3',
+      plot_bgcolor: '#cad2d3',
       yaxis2: {
         title: 'Fatalites',
         overlaying: 'y',
@@ -1109,4 +1123,36 @@ Highcharts.chart('container', {
 
   } 
 ]
-});  
+}); 
+
+document.getElementById('dangerLight').onclick = illuminateRed;
+document.getElementById('stableLight').onclick = illuminateYellow;
+document.getElementById('warningLight').onclick = illuminateOrange;
+document.getElementById('peacfulLight').onclick = illuminateGreen;
+
+function illuminateRed() {
+  clearLights();
+  document.getElementById('dangerLight').style.backgroundColor = "red";
+}
+
+function illuminateYellow() {
+  clearLights();
+  document.getElementById('stableLight').style.backgroundColor = "yellow";
+}
+
+function illuminateOrange(){
+  clearLights();
+  document.getElementById('warningLight').style.backgroundColor = 'orange'
+}
+
+function illuminateGreen(){
+  clearLights();
+  document.getElementById('peacfulLight').style.backgroundColor = 'green'
+}
+
+function clearLights() {
+  document.getElementById('dangerLight').style.backgroundColor = "black";
+  document.getElementById('stableLight').style.backgroundColor = "black";
+  document.getElementById('warningLight').style.backgroundColor = "black";
+  document.getElementById('peacfulLight').style.backgroundColor = "black";
+}
