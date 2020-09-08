@@ -234,14 +234,14 @@ body {
 
 #controlPanel {
   float: left;
-  padding-top: 30px;
+  padding-top: 5px;
 }
 
 .button {
   background-color: gray;
   color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 5px;
   text-align: center;
   margin: 90px 40px;
   cursor: pointer;
@@ -255,7 +255,7 @@ body {
   border-radius: 40px;
   margin: 30px 0;
   padding: 20px;
-  transform: rotate(90deg);
+  transform: rotate(270deg);
 }
 
 .bulb {
