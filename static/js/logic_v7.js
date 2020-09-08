@@ -1128,7 +1128,7 @@ Highcharts.chart('container', {
 document.getElementById('dangerLight').onclick = illuminateRed;
 document.getElementById('stableLight').onclick = illuminateYellow;
 document.getElementById('warningLight').onclick = illuminateOrange;
-document.getElementById('peacfulLight').onclick = illuminateGreen;
+document.getElementById('peacefulLight').onclick = illuminateGreen;
 
 function illuminateRed() {
   clearLights();
@@ -1147,12 +1147,12 @@ function illuminateOrange(){
 
 function illuminateGreen(){
   clearLights();
-  document.getElementById('peacfulLight').style.backgroundColor = 'green'
+  document.getElementById('peacefulLight').style.backgroundColor = 'green'
 }
 
 function clearLights() {
   document.getElementById('dangerLight').style.backgroundColor = "black";
   document.getElementById('stableLight').style.backgroundColor = "black";
   document.getElementById('warningLight').style.backgroundColor = "black";
-  document.getElementById('peacfulLight').style.backgroundColor = "black";
+  document.getElementById('peacefulLight').style.backgroundColor = "black";
 }
