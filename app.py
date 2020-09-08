@@ -128,7 +128,7 @@ def ticker(country):
     url = f"https://news.google.com/rss/search?q={country}"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'xml')
-    results = soup.find_all('item')
+    results = soup.find_all('item',limit=5)
     titles = []
     links = []
     dates = []
@@ -146,6 +146,7 @@ def ticker(country):
         except AttributeError as e:
             print(e)
     news = {'Title' : titles, 'Link' : links, 'Date' : dates}
+    #news = sorted(news.items(),key=lambda x:x[1], reverse=True)
 
     return (jsonify(news))
 #Predict
