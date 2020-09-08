@@ -33,9 +33,6 @@
     display: flex;
 }
 
-.fp-tableCell {
-  height: 600px !important
-}
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -50,13 +47,22 @@
   }
   
   #one {
-    height: 500px;
+    height: 700px;
+    margin-bottom: 20px;
+    border: 1px;
+    border-style: solid;
+    border-color: #7b0b45;
+    border-radius: 10;
   }
-
+.svg-container {
+  border-radius: 2% !important
+}
   #map{
-    height: 500px;
+    height: 700px;
     width: 49%;
     position: relative;
+    margin-bottom: 20px;
+    border-radius: 2% !important;
   }
 
 
@@ -200,10 +206,12 @@ font-weight: 600;
 
 .slidecontainer {
   width: 100%;
+  color: #cad2d3
 }
 
 .slider {
   -webkit-appearance: none;
+  fill: #cad2d3;
   width: 100%;
   height: 25px;
   background: #d3d3d3;
@@ -222,14 +230,14 @@ font-weight: 600;
   appearance: none;
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: goldenrod;
   cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: goldenrod;
   cursor: pointer;
 }
 
