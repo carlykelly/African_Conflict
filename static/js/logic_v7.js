@@ -6,6 +6,8 @@
 //    5) click on SSA scatter graph buttons:
 
 var endpoint = '/ultimate'
+var scatter_marker = document.getElementById('one')
+
 
 // Creating map object
 
@@ -65,6 +67,23 @@ var yAxis_ethnic_score = []
 var yAxis_corruption_control_percentile = []
 var yAxis_government_effectiveness_percentile = []
 var yAxis_ruleoflaw_percentile = []
+
+// vvvvvvvvvvvvvvvvvvvvvvvvvvv Country news ticker generator vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+function createNews(country){
+  var panel = d3.select('#sample-metadata');
+  d3.json(`/api/data/getticker/${country}`).then(function(news){
+    var ticker = '';
+    panel.html("");
+    var marquee = panel.append('marquee');
+    for (i = 0; i < 5; i++){
+      var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
+      var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `).attr('target',"_blank")                           
+        }                 
+   }
+);   
+}
+// ^^^^^^^^^^^^^^^^^^^^^^^^^^ Country news ticker generator ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Build Scatter vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function buildScatter(){
@@ -531,8 +550,17 @@ function getSelectedCountryDataFromEndpoint(){
         scatter_yAxis_total_population.push(cac.total_population)
       })
      buildScatter()
-    })
 
+     //vvvvvvvvvvvvvvvvvvvvvvvvvv CLICKING ON SCATTER GRAPH MARKER TO GENERATE COUNTRY GRAPH vvvvvvvvvvvvvvvvvvvvvv
+     scatter_marker.on('plotly_click', function click_scatter_marker(data){
+      selected_country = data.points[0].text
+      d3.select('#selDataset').node().value = selected_country
+      getSelectedCountryDataFromEndpoint()
+      createNews(selected_country)
+    }); 
+  // ^^^^^^^^^^^^^^^^^^^^^^^^^ CLICKING ON SCATTER GRAPH MARKER TO GENERATE COUNTRY GRAPH ^^^^^^^^^^^^^^^^^^
+    
+    })
   }
 }
 
@@ -560,20 +588,6 @@ d3.select('#selDataset').on('change',setSelectedCountryValue)
   };
     // (BPDD) ^^^^^^^^^^^^^^^^^^ BUILD & POPULATE DROPDOWN VALUES AND FILTER NONE SUB-SAHARAN COUTNRIES ^^^^^^^^^^
   builddropdown()
-
-function createNews(country){
-  var panel = d3.select('#sample-metadata');
-  d3.json(`/api/data/getticker/${country}`).then(function(news){
-    var ticker = '';
-    panel.html("");
-    var marquee = panel.append('marquee');
-    for (i = 0; i < 5; i++){
-      var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
-      var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `).attr('target',"_blank")                           
-        }                 
-   }
-);   
-}
 
 function makeOutline(country_name){
   poly = data.features.filter(a => a.properties.name == country_name)
