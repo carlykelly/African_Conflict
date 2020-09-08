@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 from flask import Flask, render_template, redirect, request, jsonify, send_from_directory
 from sqlalchemy import create_engine, func
@@ -147,7 +148,11 @@ def ticker(country):
     news = {'Title' : titles, 'Link' : links, 'Date' : dates}
 
     return (jsonify(news))
-   
+#Predict
+
+# @app.route("/predict/", methods = ['GET', 'POST'])
+# def predict():
+#     data = request.get_data()   
 
 if __name__ == '__main__':
     app.run(debug=True)
