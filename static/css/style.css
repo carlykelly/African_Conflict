@@ -230,7 +230,8 @@ font-weight: 600;
   appearance: none;
   width: 25px;
   height: 25px;
-  background: goldenrod;
+  background: url(https://www.govloop.com/wp-content/uploads/avatars/100365/5b97405413355-bpfull.png) center center no-repeat;
+  background-size: contain;
   cursor: pointer;
 }
 
