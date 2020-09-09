@@ -1045,12 +1045,17 @@ d3.select("#corr-chkbx").on('change',handleChange)
 
 // ATTEMPT AT A BUBBLE CHART BELOW!!!! //
 Highcharts.chart('container', {
+  legend: {itemStyle: {
+    color: 'white'}},
   chart: {
       type: 'packedbubble',
+      backgroundColor: '#191a1a',
       height: '50%'
   },
   title: {
-      text: 'Feature Importance in Predicting Conflict'
+    style: {color: 'whitesmoke'},
+
+      text: 'Feature Importance in Predicting Conflict',
   },
   tooltip: {
       useHTML: true,
@@ -1075,13 +1080,14 @@ Highcharts.chart('container', {
                   value: .01
               },
               style: {
-                  color: 'black',
+                  color: 'white',
                   textOutline: 'none',
                   fontWeight: 'normal'
               }
           }
       }
   },
+
   series: [{
       name: 'Population Factors',
       data: [{
