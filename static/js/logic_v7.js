@@ -136,8 +136,8 @@ function buildScatter(){
       title:'African GPD vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Total GDP"},
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       // showlegend: true,
       // legend: {"orientation": "h"} 
     };
@@ -150,8 +150,8 @@ function buildScatter(){
       title:'African Population vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Total Population"},
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       // showlegend: true,
       // legend: {"orientation" : "h"}
     };
@@ -164,8 +164,8 @@ function buildScatter(){
       title:'African Corruption vs. Conflict',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Corruption Control %"},
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       // showlegend: true,
       // legend: {"orientation" : "h"}
     };
@@ -178,8 +178,8 @@ function buildScatter(){
       title:'Continent Conflict Comparison',
       xaxis: {title: "Country Conflict Events"},
       yaxis: {title: "Country Fatalities"},
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       // showlegend: true,
       // legend: {"orientation" : "h" },
     };
@@ -214,7 +214,7 @@ function buildGraph(){
     name: `Conflict Fatalities`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'black'
+    line: {color: 'goldenrod'
     },
     connectgaps: true
   }
@@ -304,7 +304,7 @@ function buildGraph(){
     name: `Total Population Growth %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'black'
+    line: {color: 'goldenrod'
     },
     connectgaps: true
   }
@@ -371,7 +371,7 @@ function buildGraph(){
     name: `Rule of Law %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'black'
+    line: {color: 'goldenrod'
     },
     connectgaps: true
   }
@@ -382,8 +382,8 @@ function buildGraph(){
       title:  `${title_country_name[0]} GDP Graph`,
       yaxis: {title: 'Conflict Events'},
       color:'black',
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       yaxis2: {
         title: 'GDP Growth % / FDI % of GDP',
         overlaying: 'y',
@@ -405,8 +405,8 @@ function buildGraph(){
       yaxis: {title: 'Conflict Events',
       gridcolor: 'black'},
       color:'black',
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       yaxis2: {
         title: 'Population',
         overlaying: 'y',
@@ -426,8 +426,8 @@ function buildGraph(){
       title:  `${title_country_name[0]} Corruption Graph`,
       yaxis: {title: 'Corruption Score'},
       color:'black',
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       yaxis2: {
         title: 'Rule of Law',
         overlaying: 'y',
@@ -447,8 +447,8 @@ function buildGraph(){
       title:  `${title_country_name[0]} Conflict Graph`,
       yaxis: {title: 'Conflict Events'},
       color:'black',
-      paper_bgcolor: '#cad2d3',
-      plot_bgcolor: '#cad2d3',
+      paper_bgcolor: '#191a1a',
+      plot_bgcolor: '#191a1a',
       yaxis2: {
         title: 'Fatalites',
         overlaying: 'y',
@@ -963,7 +963,7 @@ function mouseout_func(event) {
             tileSize: 512,
             maxZoom: 18,
             zoomOffset: -1,
-            id: "mapbox/light-v9",
+            id: "mapbox/dark-v10",
             scrollWheelZoom: false,
             accessToken: 'sk.eyJ1IjoiY2FybHlma2VsbHkiLCJhIjoiY2tkZ3U4Z3B3Mmx6dDJ4cG16Y2l6eWQ1bCJ9.ewwhVCi9nw45LL2iNZ1hbA'
           }).addTo(myMap);
