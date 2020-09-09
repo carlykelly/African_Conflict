@@ -149,7 +149,25 @@ def ticker(country):
     #news = sorted(news.items(),key=lambda x:x[1], reverse=True)
 
     return (jsonify(news))
+
+
 #Predict
+# load json and create model
+# from tensorflow import keras 
+# from keras.models import model_from_json
+# from keras.models import Sequential
+# from keras.layers import Dense
+# json_file = open('model.json', 'r')
+# loaded_model_json = json_file.read()
+# json_file.close()
+# loaded_model = model_from_json(loaded_model_json)
+# # load weights into new model
+# loaded_model.load_weights("model_weights.h5")
+# print("Loaded model from disk")
+# new_data = np.array([[2.11, -1.24, 0.424, 34.44
+#  ]])
+# print(f"Predicted class: {loaded_model.predict_classes(new_data)}")
+
 
 # @app.route("/predict/", methods = ['GET', 'POST'])
 # def predict():
