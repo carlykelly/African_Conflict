@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <meta charset="utf-8">
@@ -7,9 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   ​
-  <title>Sub-Saharan Africa</title>
-
- ​
+  <title>African Conflict</title>
 
   <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -18,33 +17,32 @@
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
+  
+    <!--OLD SINGLE SCROLL  -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
     integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
-    crossorigin="anonymous" />
-
-  <!-- Map Box -->
+    crossorigin="anonymous" /> -->
+ 
+    <!-- Map Box -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+  
   <!--favicon-->
   <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
   <!--D3 cdn-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
 
-  ​
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/css/styleSingle.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='../static/css/styleYasir.css') }}">
 
   <!-- Plotly -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-  <!-- AOS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+  <!-- OLD AOS -->
+  <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-
-  <script>AOS.init()</script>
+  <script>AOS.init()</script> -->
 
   <!-- HighCharts -->
   <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -53,82 +51,122 @@
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 </head>
+
+<!-- BODY -->
+
 <body>
-<div id='fullPage'>
-  <div class = "main" id="page1">
-  <div class ='row'></div>
-  <!-- Links to move from one page to the next -->
-  <a href="#page3" style="color:red;float: right; padding: 5px"><h5><u>Predictive Modeling</u></h5></a> &nbsp;&nbsp;&nbsp; 
-  <a href="#page2" style="color:red;float: right;padding: 5px"><h5><u>Interactive Map</u></h5></a> &nbsp;&nbsp;&nbsp; 
-  
-  <h3>"We are going to bring peace to the country,
-  <br>not the peace of rifles and bayonets,
-  <br>but the peace that comes from men's hearts and good will"</h3>
-  <center><h4>Patrice Lumumba</h4></center>
-  <br><br><br>
-  <div class="col-lg-12">
-    <center><div id='animated_map' class="justify-content-center"></div></center>
+  <!-- <div id='fullPage'>
+    <div class = "main" id="page1"> -->
+  <div class='row'>
+    <!-- Links to move from one page to the next -->
+    <a href="#page3" style="color:red;float: right; padding: 5px">
+      <h5><u>Predictive Modeling</u></h5>
+    </a> &nbsp;&nbsp;&nbsp;
+    <a href="#page2" style="color:red;float: right;padding: 5px">
+      <h5><u>Interactive Map</u></h5>
+    </a> &nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class='row'>
+    <h3>"We are going to bring peace to the country,
+      <br>not the peace of rifles and bayonets,
+      <br>but the peace that comes from men's hearts and good will"</h3>
+    <center>
+      <h4>Patrice Lumumba</h4>
+    </center>
+    <br><br><br>
+  </div>
+
+  <div class = 'row'>
+
+    <div id='tableaudiv' class="col-lg-12">
+      <!-- <center><div id='animated_map' class="justify-content-center"></div></center> -->
+      <div class='tableauPlaceholder' id='viz1599670104992' style='position: relative'><noscript><a href='#'><img alt=' '
+              src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictViz&#47;Dashboard1&#47;1_rss.png'
+              style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='site_root' value='' />
+          <param name='name' value='AfricaConflictViz&#47;Dashboard1' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image'
+            value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictViz&#47;Dashboard1&#47;1.png' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en' />
+          <param name='filter' value='publish=yes' /></object></div>
+      <script
+        type='text/javascript'>                    var divElement = document.getElementById('viz1599670104992'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else if (divElement.offsetWidth > 500) { vizElement.style.width = '100%'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '877px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+  </div>
   </div>
 
 
-</div>
-</div>    
 
-<div class="main" id="page2">
+  <div class="main" id="page2">
     <h1> Interactive Map</h1>
     <!-- Links to move from one page to the next -->
-    <a href="#page3" style="color:red;float: right; padding: 5px"><h5><u>Predictive Modeling</u></h5></a> &nbsp;&nbsp;&nbsp; 
-    <a href="#page1" style="color:red;float: right; padding: 5px"><h5><u>Main Page</u></h5></a> &nbsp;&nbsp;&nbsp; 
-
-<p></p> 
-<p></p>
+    <a href="#page3" style="color:red;float: right; padding: 5px">
+      <h5><u>Predictive Modeling</u></h5>
+    </a> &nbsp;&nbsp;&nbsp;
+    <a href="#page1" style="color:red;float: right; padding: 5px">
+      <h5><u>Main Page</u></h5>
+    </a> &nbsp;&nbsp;&nbsp;
+    <p></p>
+    <p></p>
     <div class="col-md-2">
-        <select id="selDataset"></select>
+      <select id="selDataset"></select>
     </div>
 
     <div id="sample-metadata" class="panel-body"></div>
     <div id="dashboard" class="col-lg-6 container">
-        <div class="row">
+      <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <div data-aos="fade-right" id="one"></div>
+          <div data-aos="fade-right" id="one"></div>
         </div>
-        </div>
-  </div> 
+      </div>
+    </div>
 
-  <div class='row' style="height:550px">
-    <div id="map" class="col-lg-6 container-fluid justify-content-end"></div>
+    <div class='row' style="height:550px">
+      <div id="map" class="col-lg-6 container-fluid justify-content-end"></div>
+    </div>
   </div>
-</div>
+
   
-</div>
-
-
-<div class="main" id="page3">
-  <!-- Links to move from one page to the next -->
-  <a href="#page2" style="color:red;float: right;padding: 5px"><h5><u>Interactive Map</u></h5></a> &nbsp;&nbsp;&nbsp; 
-  <a href="#page1" style="color:red;float: right; padding: 5px"><h5><u>Main Page</u></h5></a> &nbsp;&nbsp;&nbsp; 
+  <div class="main" id="page3">
+    <!-- Links to move from one page to the next -->
+    <a href="#page2" style="color:red;float: right;padding: 5px">
+      <h5><u>Interactive Map</u></h5>
+    </a> &nbsp;&nbsp;&nbsp;
+    <a href="#page1" style="color:red;float: right; padding: 5px">
+      <h5><u>Main Page</u></h5>
+    </a> &nbsp;&nbsp;&nbsp;
     <h1>Predictive Modeling</h1>
 
-    <div class = "col-lg-4">
+    <div class="col-lg-4">
       <div class="slidecontainer">
         <p>Control of Corruption</p>
-        <input class = 'slider' id="myRange1" type="range" min="-2.5" max="2.5" value=".1" >
+        <input class='slider' id="myRange1" type="range" min="-2.5" max="2.5" value=".1">
         <p>Value: <span id="demo1"></span></p>
         <p>Political Stability</p>
-        <input class = 'slider'id="myRange2" type="range" min="-2.5" max="2.5" value=".1">
+        <input class='slider' id="myRange2" type="range" min="-2.5" max="2.5" value=".1">
         <p>Value: <span id="demo2"></span></p>
         <p>Ethnic Diversity Score</p>
-        <input class = 'slider'id="myRange3" type="range" min="-1" max="1" value=".1">
+        <input class='slider' id="myRange3" type="range" min="-1" max="1" value=".1">
         <p>Value: <span id="demo3"></span></p>
         <p>GDP Growth Rate</p>
-        <input class = 'slider' id="myRange4" type="range" min="-60" max="125" value="5">
+        <input class='slider' id="myRange4" type="range" min="-60" max="125" value="5">
         <p>Value: <span id="demo4"></span></p>
-       </div>
+      </div>
 
-       <div id="controlPanel">
+      <div id="controlPanel">
         <h1 id="stopButton" class="button">Predict</h1>
-        </div>
-        <div id="traffic-light">
+      </div>
+      <div id="traffic-light">
         <div id="peacefulLight" class="bulb">Stable</div>
         <div id="stableLight" class="bulb">Low Risk</div>
         <div id="warningLight" class="bulb">Elevated Risk</div>
@@ -137,25 +175,22 @@
     </div>
 
     <div class="col-lg-4">
-        <figure class="highcharts-figure">
-          <div id="container"></div>
-          <p class="highcharts-description">
-            This chart shows how packed bubble charts can be grouped by series,
-            creating a hierarchy.
-          </p>
-        </figure>
-      </div>
+      <figure class="highcharts-figure">
+        <div id="container"></div>
+      </figure>
+    </div>
 
-</div>
-</div>
+  </div>
+  </div>
 
-<!-- <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script> -->
-<script src="{{ url_for('static', filename='../static/js/logic_v7_Single.js') }}"></script>
-<script src="{{ url_for('static', filename='../static/js/choropleth.js') }}"></script>
-<script src="{{ url_for('static', filename='../static/js/AnimatedMap.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
-  integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
-  crossorigin="anonymous"></script>
+  <!-- <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='../static/js/logic_v7.js') }}"></script>
+  <script src="{{ url_for('static', filename='../static/js/choropleth.js') }}"></script>
+  <script src="{{ url_for('static', filename='../static/js/AnimatedMap.js') }}"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
+    integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
+    crossorigin="anonymous"></script> -->
 
 </body>
+
 </html>
