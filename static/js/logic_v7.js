@@ -23,6 +23,7 @@ var baseMaps
   var conflict;
   var outline
   var corruption
+  var makeOutline = function(){};
 
   var scatter_array = [] // array will contain the above objects. will be used to build the scatter graph
   
@@ -565,14 +566,14 @@ function getSelectedCountryDataFromEndpoint(){
       })
      buildScatter()
 
-     //vvvvvvvvvvvvvvvvvvvvvvvvvv CLICKING ON SCATTER GRAPH MARKER TO GENERATE COUNTRY GRAPH vvvvvvvvvvvvvvvvvvvvvv
-    //  scatter_marker.on('plotly_click', function click_scatter_marker(data){
-    //   selected_country = data.points[0].text
-    //   d3.select('#selDataset').node().value = selected_country
-    //   getSelectedCountryDataFromEndpoint()
-    //   createNews(selected_country)
-    //   makeOutline(selected_country)
-    // }); 
+    //  //vvvvvvvvvvvvvvvvvvvvvvvvvv CLICKING ON SCATTER GRAPH MARKER TO GENERATE COUNTRY GRAPH vvvvvvvvvvvvvvvvvvvvvv
+     scatter_marker.on('plotly_click', function click_scatter_marker(data){
+      selected_country = data.points[0].text
+      d3.select('#selDataset').node().value = selected_country
+      getSelectedCountryDataFromEndpoint()
+      createNews(selected_country)
+      makeOutline(selected_country)
+    }); 
   // ^^^^^^^^^^^^^^^^^^^^^^^^^ CLICKING ON SCATTER GRAPH MARKER TO GENERATE COUNTRY GRAPH ^^^^^^^^^^^^^^^^^^
     
     })
@@ -604,7 +605,7 @@ d3.select('#selDataset').on('change',setSelectedCountryValue)
     // (BPDD) ^^^^^^^^^^^^^^^^^^ BUILD & POPULATE DROPDOWN VALUES AND FILTER NONE SUB-SAHARAN COUTNRIES ^^^^^^^^^^
   builddropdown()
 
-function makeOutline(country_name){
+ makeOutline = function(country_name){
   poly = data.features.filter(a => a.properties.name == country_name)
                     if(outline){
                       myMap.removeLayer(outline)
@@ -948,13 +949,13 @@ function mouseout_func(event) {
 
 
             ////////// Trying to merge in Yasir's Code ///////////////////
-            scatter_marker.on('plotly_click', function click_scatter_marker(data){
-              selected_country = data.points[0].text
-              d3.select('#selDataset').node().value = selected_country
-              getSelectedCountryDataFromEndpoint()
-              createNews(selected_country)
-              makeOutline(selected_country)
-            }); 
+            // scatter_marker.on('plotly_click', function click_scatter_marker(data){
+            //   selected_country = data.points[0].text
+            //   d3.select('#selDataset').node().value = selected_country
+            //   getSelectedCountryDataFromEndpoint()
+            //   createNews(selected_country)
+            //   makeOutline(selected_country)
+            // }); 
             
 
           L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
