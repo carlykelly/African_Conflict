@@ -1231,14 +1231,11 @@ Highcharts.chart('container', {
       name: 'Population Factors',
       data: [{
           name: 'Ethnic Score',
-          value: 0.226467
-      }, {
-          name: 'Rural Population Growth',
-          value: 0.107284
-      },
+          value: 0.246329
+      }, 
       {
           name: "Mortality Rate",
-          value: 0.088169
+          value: 0.082087
       
       }],
       color: '#CA3433'
@@ -1246,35 +1243,36 @@ Highcharts.chart('container', {
       name: 'Economic Factors',
       data: [{
           name: "Total GNI",
-          value: 0.105394
+          value: 0.128995
       },
       {
-          name: "Total GDP",
-          value: 0.100491
+          name: "GDP Per Capita",
+          value: 0.096466
       },
-      {
-          name: "FDI Inflows Total",
-          value: 0.044585
-      },
-      {
-          name: "FDI Inflows GDP",
-          value: 0.042612
-      }],
+     ],
       color: '#95F985'
   }, {
       name: 'Government Factors',
       data: [{
-          name: "Government Effectiveness",
-          value: 0.114375
+          name: "Effectiveness",
+          value: 0.114408
       },
       {
           name: "Rule of Law",
-          value: 0.090855
+          value: 0.079391
       },
       {
-          name: "Government Stability",
+          name: "Stability",
           value: 0.079769
-      }],
+      },
+      {
+        name: "Accountability",
+        value: 0.100860
+    },
+    {
+      name: "Corruption Control",
+      value: 0.072335
+    }],
       color: 'goldenrod'
 
   } 
