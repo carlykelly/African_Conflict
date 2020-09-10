@@ -153,7 +153,7 @@
         <input class='slider' id="myRange2" type="range" min="-2.5" max="2.5" value=".1">
         <p>Value: <span id="demo2"></span></p>
         <p>Ethnic Diversity Score</p>
-        <input class='slider' id="myRange3" type="range" min="-1" max="1" value=".1">
+        <input class='slider' id="myRange3" type="range" min="0" max="1" value=".1">
         <p>Value: <span id="demo3"></span></p>
         <p>GDP Growth Rate</p>
         <input class='slider' id="myRange4" type="range" min="-60" max="125" value="5">
@@ -200,7 +200,7 @@
       var output2 = document.getElementById("demo2");
       var output3 = document.getElementById("demo3");
       var output4 = document.getElementById("demo4");
-      document.getElementById("myRange3").step = ".05";
+      document.getElementById("myRange3").step = ".005";
       document.getElementById("myRange2").step = ".1";
       document.getElementById("myRange1").step = ".1";
       output1.innerHTML = slider1.value;
