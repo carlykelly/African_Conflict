@@ -72,11 +72,12 @@ var yAxis_ruleoflaw_percentile = []
 // vvvvvvvvvvvvvvvvvvvvvvvvvvv Country news ticker generator vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function createNews(country){
   var panel = d3.select('#sample-metadata');
+  var noTick = 
   d3.json(`/api/data/getticker/${country}`).then(function(news){
     var ticker = '';
     panel.html("");
     var marquee = panel.append('marquee');
-    if (typeof outline == 'undefined') {
+    if (d3.select('#selDataset').node().value == 'All African Countries') {
     console.log("HELLO")}
     else{for (i = 0; i < 5; i++){
       var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
@@ -700,6 +701,7 @@ function mouseout_func(event) {
 
   d3.select('#selDataset').on('change.carly', function(){
     country = d3.select('#selDataset').node().value
+    createNews(country)
     poly = data.features.filter(a => a.properties.name == country)
     if(outline){
     myMap.removeLayer(outline)
@@ -711,7 +713,7 @@ function mouseout_func(event) {
       fillOpacity: 0
     }).addTo(myMap)
     
-    createNews(country)
+
 
    })
 
