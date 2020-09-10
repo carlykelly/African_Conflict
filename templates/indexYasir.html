@@ -159,7 +159,9 @@
         <input class='slider' id="myRange4" type="range" min="-60" max="125" value="5">
         <p>Value: <span id="demo4"></span></p>
       </div>
-
+    </div>
+    
+    <div class='col-lg-3'>
       <div id="controlPanel">
         <h1 id="stopButton" class="button">Predict</h1>
       </div>
@@ -170,14 +172,14 @@
         <div id="dangerLight" class="bulb">Severe Risk</div>
       </div>
     </div>
-
-    <div class="col-lg-4">
+    
+    <div class="col-lg-5">
       <figure class="highcharts-figure">
         <div id="container"></div>
       </figure>
     </div>
-
-  </div>
+    
+    
   </div>
 
   <!-- <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script> -->
@@ -187,6 +189,39 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
     integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
     crossorigin="anonymous"></script> -->
+    <script>
+
+
+      var slider1 = document.getElementById("myRange1");
+      var slider2 = document.getElementById("myRange2");
+      var slider3 = document.getElementById("myRange3");
+      var slider4 = document.getElementById("myRange4");
+      var output1 = document.getElementById("demo1");
+      var output2 = document.getElementById("demo2");
+      var output3 = document.getElementById("demo3");
+      var output4 = document.getElementById("demo4");
+      document.getElementById("myRange3").step = ".05";
+      document.getElementById("myRange2").step = ".1";
+      document.getElementById("myRange1").step = ".1";
+      output1.innerHTML = slider1.value;
+      output2.innerHTML = slider2.value;
+      output3.innerHTML = slider3.value;
+      output4.innerHTML = slider4.value;
+
+      slider1.oninput = function () {
+        output1.innerHTML = this.value;
+      }
+      slider2.oninput = function () {
+        output2.innerHTML = this.value;
+      }
+      slider3.oninput = function () {
+        output3.innerHTML = this.value;
+      }
+      slider4.oninput = function () {
+        output4.innerHTML = this.value;
+      }
+    </script>
+
 
 </body>
 
