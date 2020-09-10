@@ -76,11 +76,13 @@ function createNews(country){
     var ticker = '';
     panel.html("");
     var marquee = panel.append('marquee');
-    for (i = 0; i < 5; i++){
+    if (typeof outline == 'undefined') {
+    console.log("HELLO")}
+    else{for (i = 0; i < 5; i++){
       var dateNews = marquee.append('span').text(`${news['Date'][i]} | `)
       var tick = marquee.append('a').attr('href',`${news['Link'][i]}`).text(`${news['Title'][i]} || `).attr('target',"_blank")                           
-        }                 
-   }
+        }}               
+   } 
 );   
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^ Country news ticker generator ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1276,6 +1278,9 @@ stopButton.on("click", function(foo){
     }
     if (data.predicted_class == '[2]'){
       illuminateOrange()
+    }
+    if (data.predicted_class == '[3]'){
+      illuminateRed()
     }
     
   });

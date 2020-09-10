@@ -187,7 +187,7 @@ def predict():
         'stability_score': stability_score,
         'ethnic_score': ethnic_score,
         'gdp_per_capita': gdp_per_capita,
-        'predicted_class': predicted_class
+        'predicted_class': str(predicted_class)
     }
 
     return(jsonify(test_dict))
