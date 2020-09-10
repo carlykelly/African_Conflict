@@ -226,21 +226,14 @@ function buildGraph(){
     y: yAxis_conflict_events,
     name: `Conflict Events`,
     type: 'bar',
-    marker: {color: 'indianred'
+    marker: {color: 'indianred',
+    opacity: 0.65,
+    line: {color: '#8b0f2a',
+    width: 3.5,
+    }
     },
-    connectgaps: true
   }
 
-  // var conflict_events_line_trace = {
-  //   x: xAxis_year,
-  //   y: yAxis_conflict_events,
-  //   name: `Conflict Events`,
-  //   type: 'line',
-  //   yaxis: 'y1',
-  //   line: {color: 'indianred'
-  //   },
-  //   connectgaps: true
-  // }
 
   var conflict_fatalities_trace = {
     x: xAxis_year,
@@ -248,7 +241,8 @@ function buildGraph(){
     name: `Conflict Fatalities`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'goldenrod'
+    line: {color: 'white',
+    width: 5
     },
     connectgaps: true
   }
@@ -270,7 +264,8 @@ function buildGraph(){
     name: `FDI as a Percentage of GDP`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'goldenrod'
+    line: {color: 'goldenrod',
+    width: 5
     },
     connectgaps: true
   }
@@ -281,7 +276,8 @@ function buildGraph(){
     name: `GDP Growth %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: '2B7A78'
+    line: {color: '#4c7838',
+    width: 5
     },
     connectgaps: true
   }
@@ -312,30 +308,34 @@ function buildGraph(){
     x: xAxis_year,
     y: yAxis_urban_population,
     name: `Urban Population`,
-    yaxis: 'y2',
+    yaxis: 'y1',
     type: 'bar',
-    markers: {color: 'green'
-    },
-    connectgaps: true
+    marker: {color: 'goldenrod',
+    opacity: 0.8,
+ 
+    }
   }
 
   var rural_population_trace = {
     x: xAxis_year,
     y: yAxis_rural_population,
     name: `Rural Population`,
-    yaxis: 'y2',
+    yaxis: 'y1',
     type: 'bar',
-    markers: {color: 'red'
-    },
-    connectgaps: true
+    marker: {color: '#DA70D6',
+    opacity: 0.65,
+
+    }
+    
   }
   var conflict_events_line_trace = {
     x: xAxis_year,
     y: yAxis_conflict_events,
     name: `Conflict Events`,
     type: 'line',
-    yaxis: 'y1',
-    line: {color: 'indianred'
+    yaxis: 'y2',
+    line: {color: 'white',
+    width: 5
     },
     connectgaps: true
   }
@@ -393,7 +393,8 @@ function buildGraph(){
     name: `Corruption Control  %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'blue'
+    line: {color: '#56A0D3',
+    width: 5
     },
     connectgaps: true
   }
@@ -404,7 +405,8 @@ function buildGraph(){
     name: `Government Eff. %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'red'
+    line: {color: 'white',
+    width: 5
     },
     connectgaps: true
   }
@@ -415,7 +417,8 @@ function buildGraph(){
     name: `Rule of Law %`,
     yaxis: 'y2',
     type: 'line',
-    line: {color: 'goldenrod'
+    line: {color: 'goldenrod',
+    width: 5
     },
     connectgaps: true
   }
@@ -429,6 +432,7 @@ function buildGraph(){
       },
 
       yaxis: {title: 'Conflict Events',
+      showgrid: false,
       color: 'white',
       font: {color: 'white'}},
       color:'black',
@@ -436,6 +440,7 @@ function buildGraph(){
       plot_bgcolor: '#191a1a',
       yaxis2: {
         title: 'GDP Growth % / FDI % of GDP',
+        showgrid: false,
         color: 'white',
         overlaying: 'y',
         side: 'right'
@@ -454,20 +459,22 @@ function buildGraph(){
     data = [conflict_events_line_trace, rural_population_trace, urban_population_trace];
     layout = {
       barmode: 'stack',
-      shapes: {type: 'line'},
-      title:  `${title_country_name[0]} Diversity Graph`,
+      title:  `${title_country_name[0]} Demographics Graph`,
       "titlefont": {
         "color": 'white'
       },
-      yaxis: {title: 'Conflict Events',
+      yaxis: {title: 'Urban v. Rural Population %',
+      showgrid: false,
       color: 'white',
-      gridcolor: 'black'},
+      font: {color: 'white'}},
       color:'black',
+      // overlaying: 'y',
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
       yaxis2: {
+        title: 'Conflict Events',
+        showgrid: false,
         color: 'white',
-        title: 'Population',
         overlaying: 'y',
         side: 'right'
       },
@@ -488,7 +495,8 @@ function buildGraph(){
         "color": 'white'
       },
       yaxis: {title: 'Corruption Score',
-      color: 'white'},
+      color: 'white',
+      showgrid: false},
       color:'black',
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
@@ -496,7 +504,8 @@ function buildGraph(){
         title: 'Rule of Law',
         color: 'white',
         overlaying: 'y',
-        side: 'right'
+        side: 'right',
+        showgrid: false
       },
       showlegend: true,
         legend: {"orientation": "h",
@@ -515,13 +524,15 @@ function buildGraph(){
         "color": 'white'
       },
       yaxis: {title: 'Conflict Events',
-      color: 'white',},
+      color: 'white',
+      showgrid: false},
       color:'black',
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
       yaxis2: {
         title: 'Fatalites',
         color: 'white',
+        showgrid: false,
         overlaying: 'y',
         side: 'right'
       },
@@ -1014,7 +1025,7 @@ function mouseout_func(event) {
 
         baseMaps = {
           "Instances of Conflict": conflict,
-          "Diversity Rate": ethnicity,
+          "Ethnicity Score": ethnicity,
           "GDP Growth Rate": gdpGrowth,    
           "Corruption Score": corruption
         }
@@ -1068,20 +1079,20 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 0
             corr_radio_button_flag = 0
             legendCase.addTo(myMap)
-            if(d3.select('#selDataset').node().value == 'All African Countries'){
+            if(d3.select('#selDataset').node().value == 'All African Countries' && outline){
               myMap.removeLayer(outline)
             }
             if(selected_country != ''){
               setSelectedCountryValue()            }
           }
 
-          if(eventlayer.name == 'Diversity Rate'){
+          if(eventlayer.name == 'Ethnicity Score'){
             diversity_radio_button_flag = 1
             gdp_radio_button_flag = 0
             conflict_radio_button_flag = 0
             corr_radio_button_flag = 0
             legend.addTo(myMap)
-            if(d3.select('#selDataset').node().value == 'All African Countries'){
+            if(d3.select('#selDataset').node().value == 'All African Countries' && outline){
               myMap.removeLayer(outline)
             }
             if(selected_country != ''){
@@ -1094,7 +1105,7 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 1
             corr_radio_button_flag = 0            
             legendMort.addTo(myMap)
-            if(d3.select('#selDataset').node().value == 'All African Countries'){
+            if(d3.select('#selDataset').node().value == 'All African Countries' && outline){
               myMap.removeLayer(outline)
             }
             if(selected_country != ''){
@@ -1107,7 +1118,7 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 0
             corr_radio_button_flag = 1            
             legendCorupt.addTo(myMap)
-            if(d3.select('#selDataset').node().value == 'All African Countries'){
+            if(d3.select('#selDataset').node().value == 'All African Countries' && outline){
               myMap.removeLayer(outline)
             }
             if(selected_country != ''){
