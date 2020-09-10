@@ -702,6 +702,11 @@ function mouseout_func(event) {
   d3.select('#selDataset').on('change.carly', function(){
     country = d3.select('#selDataset').node().value
     createNews(country)
+    if(country == 'All African Countries'){
+      myMap.removeLayer(outline)
+      console.log("All African Countries Selected")
+    }
+    else{
     poly = data.features.filter(a => a.properties.name == country)
     if(outline){
     myMap.removeLayer(outline)
@@ -712,6 +717,7 @@ function mouseout_func(event) {
       opacity: 2,
       fillOpacity: 0
     }).addTo(myMap)
+  }
     
 
 
@@ -1062,6 +1068,9 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 0
             corr_radio_button_flag = 0
             legendCase.addTo(myMap)
+            if(d3.select('#selDataset').node().value == 'All African Countries'){
+              myMap.removeLayer(outline)
+            }
             if(selected_country != ''){
               setSelectedCountryValue()            }
           }
@@ -1072,6 +1081,9 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 0
             corr_radio_button_flag = 0
             legend.addTo(myMap)
+            if(d3.select('#selDataset').node().value == 'All African Countries'){
+              myMap.removeLayer(outline)
+            }
             if(selected_country != ''){
               setSelectedCountryValue()            }
           }
@@ -1082,6 +1094,9 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 1
             corr_radio_button_flag = 0            
             legendMort.addTo(myMap)
+            if(d3.select('#selDataset').node().value == 'All African Countries'){
+              myMap.removeLayer(outline)
+            }
             if(selected_country != ''){
               setSelectedCountryValue()            }
           }
@@ -1092,6 +1107,9 @@ function mouseout_func(event) {
             conflict_radio_button_flag = 0
             corr_radio_button_flag = 1            
             legendCorupt.addTo(myMap)
+            if(d3.select('#selDataset').node().value == 'All African Countries'){
+              myMap.removeLayer(outline)
+            }
             if(selected_country != ''){
               setSelectedCountryValue()            }
           }
