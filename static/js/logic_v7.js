@@ -129,7 +129,7 @@ function buildScatter(){
     marker: { size: 12, color:'#2B7A78',
     opacity:0.85,
     line: {color: 'palegreen',
-  width: 3.5} }
+    width: 3.5} }
   };
 
   var corr_trace = {
@@ -142,7 +142,7 @@ function buildScatter(){
     marker: { size: 12, color:'#000080',
     opacity:0.85,
     line: {color: '#4B9CD3',
-  width: 3.5} }
+    width: 3.5} }
   };
   
     
