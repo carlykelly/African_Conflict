@@ -99,7 +99,11 @@ function buildScatter(){
     type: 'scatter',
     name: 'Country',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'indianred' }
+    marker: { size: 12, color:'indianred',
+    opacity: 0.75,
+    line: {color: '#8b0f2a',
+    width: 3.5,
+    } }
   };
 
   var ethnic_trace = {
@@ -109,7 +113,10 @@ function buildScatter(){
     type: 'scatter',
     name: 'Country',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'goldenrod'}
+    marker: { size: 12, color:'goldenrod',
+    line: {color: '#DC4405',
+    width: 3.5,
+    }}
   };
 
   var gdp_trace = {
@@ -119,7 +126,10 @@ function buildScatter(){
     type: 'scatter',
     name: 'Country',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'2B7A78' }
+    marker: { size: 12, color:'#2B7A78',
+    opacity:0.85,
+    line: {color: 'palegreen',
+  width: 3.5} }
   };
 
   var corr_trace = {
@@ -129,7 +139,10 @@ function buildScatter(){
     type: 'scatter',
     name: 'Country',
     text: scatter_label_country_names,
-    marker: { size: 12, color:'#000080' }
+    marker: { size: 12, color:'#000080',
+    opacity:0.85,
+    line: {color: '#4B9CD3',
+  width: 3.5} }
   };
   
     
@@ -555,6 +568,10 @@ function buildGraph(){
       },
       showlegend: true,
         legend: {"orientation": "h",
+        margin: {
+          r: 10, //increase right margin
+          pad: 10
+          },
         color: 'white',
       font:{
         color: 'white'
