@@ -430,7 +430,8 @@ function buildGraph(){
       "titlefont": {
         "color": 'white'
       },
-
+      xaxis: {
+        color: 'white'},
       yaxis: {title: 'Conflict Events',
       showgrid: false,
       color: 'white',
@@ -447,7 +448,10 @@ function buildGraph(){
       },
       showlegend: true,
         legend: {"orientation": "h",
-        color: 'white',},
+        color: 'white',
+        font:{
+          color: 'white'
+        }},
    
       connectgaps: true
 
@@ -461,8 +465,10 @@ function buildGraph(){
       barmode: 'stack',
       title:  `${title_country_name[0]} Demographics Graph`,
       "titlefont": {
-        "color": 'white'
+        "color": 'white',
       },
+      xaxis: {
+        color: 'white'},
       yaxis: {title: 'Urban v. Rural Population %',
       showgrid: false,
       color: 'white',
@@ -480,7 +486,10 @@ function buildGraph(){
       },
       showlegend: true,
         legend: {"orientation": "h",
-        color: 'white'},
+        color: 'white',
+        font:{
+          color: 'white'
+        }},
       connectgaps: true
 
     }
@@ -494,6 +503,8 @@ function buildGraph(){
       "titlefont": {
         "color": 'white'
       },
+      xaxis: {
+        color: 'white'},
       yaxis: {title: 'Corruption Score',
       color: 'white',
       showgrid: false},
@@ -509,7 +520,11 @@ function buildGraph(){
       },
       showlegend: true,
         legend: {"orientation": "h",
-        color: 'white'},
+        color: 'white',
+        font:{
+          color: 'white'
+        }
+      },
       connectgaps: true
 
     }
@@ -526,6 +541,8 @@ function buildGraph(){
       yaxis: {title: 'Conflict Events',
       color: 'white',
       showgrid: false},
+      xaxis: {
+      color: 'white'},
       color:'black',
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
@@ -538,7 +555,10 @@ function buildGraph(){
       },
       showlegend: true,
         legend: {"orientation": "h",
-        color: 'white'},
+        color: 'white',
+      font:{
+        color: 'white'
+      }},
       connectgaps: true
 
     }
