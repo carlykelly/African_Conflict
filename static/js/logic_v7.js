@@ -1286,22 +1286,22 @@ document.getElementById('peacefulLight').onclick = illuminateGreen;
 
 function illuminateRed() {
   clearLights();
-  document.getElementById('dangerLight').style.backgroundColor = "red";
+  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "red"; }, 500)
 }
 
 function illuminateYellow() {
   clearLights();
-  document.getElementById('stableLight').style.backgroundColor = "yellow";
+  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "yellow"; }, 500)
 }
 
 function illuminateOrange(){
   clearLights();
-  document.getElementById('warningLight').style.backgroundColor = 'orange'
+  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "orange"; }, 500)
 }
 
 function illuminateGreen(){
   clearLights();
-  document.getElementById('peacefulLight').style.backgroundColor = 'green'
+  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "green"; }, 500)
 }
 
 function clearLights() {
