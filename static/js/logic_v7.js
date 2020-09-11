@@ -234,6 +234,9 @@ function buildScatter(){
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Build Graphs vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function buildGraph(){
   
+
+  
+  
   var conflict_events_trace = {
     x: xAxis_year,
     y: yAxis_conflict_events,
@@ -597,6 +600,8 @@ function buildGraph(){
   // };
   var config2 = {responsive : true}
   Plotly.react ("one", data, layout, config2)
+
+  // document.getElementById("#one").classList.remove('Legend')
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Build Graphs ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -669,6 +674,14 @@ function getSelectedCountryDataFromEndpoint(){
         yAxis_ruleoflaw_percentile.push(sced.ruleoflaw_percentile)
       })
       buildGraph()
+
+    
+
+      document.getElementsByClassName("legend")[0].classList.remove("legend")
+
+
+
+
     })
   }
 
@@ -1324,14 +1337,24 @@ stopButton.on("click", function(foo){
   stability_score = d3.select('#myRange2').node().value;
   console.log(`Stability score: ${stability_score}`)
 
-  ethnic_score = d3.select('#myRange3').node().value;
+  government_effectiveness = d3.select('#myRange3').node().value;
+  console.log(`Government effectiveness: ${government_effectiveness}`)
+
+  rule_of_law = d3.select('#myRange4').node().value;
+  console.log(`Rule of law: ${rule_of_law}`)
+
+  ethnic_score = d3.select('#myRange5').node().value;
   console.log(`Ethnic score: ${ethnic_score}`)
 
-  gdp_per_capita = d3.select('#myRange4').node().value;
+  gdp_per_capita = d3.select('#myRange6').node().value;
   console.log(`GDP per capita: ${gdp_per_capita}`)
 
-  predict_endpoint = `/predict?corruption_score=${corruption_score}&stability_score=${stability_score}&ethnic_score=${ethnic_score}&gdp_per_capita=${gdp_per_capita}` 
+  fdi_inflows_gdp = d3.select('#myRange7').node().value;
+  console.log(`FDI inflows as % of GDP: ${fdi_inflows_gdp}`)
+
+  predict_endpoint = `/predict?corruption_score=${corruption_score}&stability_score=${stability_score}&government_effectiveness=${government_effectiveness}&rule_of_law=${rule_of_law}&ethnic_score=${ethnic_score}&gdp_per_capita=${gdp_per_capita}&fdi_inflows_gdp=${fdi_inflows_gdp}` 
   d3.json(predict_endpoint).then(function(data){
+
 
     console.log('the endpoint sent back:');
     console.log(data);

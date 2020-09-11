@@ -17,16 +17,16 @@
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
-  
-    <!--OLD SINGLE SCROLL  -->
+
+  <!--OLD SINGLE SCROLL  -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
     integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
     crossorigin="anonymous" /> -->
- 
-    <!-- Map Box -->
+
+  <!-- Map Box -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
-  
+
   <!--favicon-->
   <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
@@ -58,6 +58,16 @@
   <!-- <div id='fullPage'>
     <div class = "main" id="page1"> -->
   <div class='row' id='page1'>
+    <h3>"We are going to bring peace to the country,
+      <br>not the peace of rifles and bayonets,
+      <br>but the peace that comes from men's hearts and good will"
+      <a href="https://en.wikipedia.org/wiki/Patrice_Lumumba" target="_blank">
+        <h3>-Patrice Lumumba</h3>
+      </a>
+  </div>
+
+  <div class='row'>
+    <h1> Conflict 1998-2018 </h1>
     <!-- Links to move from one page to the next -->
     <a href="#page3" style="color:red;float: right; margin-right: 20px">
       <h5><u>Predictive Modeling</u></h5>
@@ -68,18 +78,30 @@
   </div>
 
   <div class='row'>
-    <h3>"We are going to bring peace to the country,
-      <br>not the peace of rifles and bayonets,
-      <br>but the peace that comes from men's hearts and good will" - Patrice Lumumba</h3>
-    <br><br><br>
-  </div>
-
-  <div class = 'row'>
-
     <div id='tableaudiv' class="col-lg-12">
       <!-- <center><div id='animated_map' class="justify-content-center"></div></center> -->
-      <div class='tableauPlaceholder' id='viz1599780133264' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictVizSecond&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AfricaConflictVizSecond&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictVizSecond&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1599780133264');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1040px';vizElement.style.maxWidth='2240px';vizElement.style.width='100%';vizElement.style.minHeight='476px';vizElement.style.maxHeight='1076px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1040px';vizElement.style.maxWidth='2240px';vizElement.style.width='100%';vizElement.style.minHeight='476px';vizElement.style.maxHeight='1076px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='877px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-  </div>
+      <div class='tableauPlaceholder' id='viz1599780133264' style='position: relative'><noscript><a href='#'><img
+              alt=' '
+              src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictVizSecond&#47;Dashboard1&#47;1_rss.png'
+              style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='site_root' value='' />
+          <param name='name' value='AfricaConflictVizSecond&#47;Dashboard1' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image'
+            value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictVizSecond&#47;Dashboard1&#47;1.png' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en' />
+          <param name='filter' value='publish=yes' /></object></div>
+      <script
+        type='text/javascript'>                    var divElement = document.getElementById('viz1599780133264'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.minWidth = '1040px'; vizElement.style.maxWidth = '2240px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '476px'; vizElement.style.maxHeight = '1076px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else if (divElement.offsetWidth > 500) { vizElement.style.minWidth = '1040px'; vizElement.style.maxWidth = '2240px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '476px'; vizElement.style.maxHeight = '1076px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '877px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
   </div>
 
 
@@ -91,7 +113,7 @@
       <h5><u>Predictive Modeling</u></h5>
     </a> &nbsp;&nbsp;&nbsp;
     <a href="#page1" style="color:red;float: right; padding: 5px">
-      <h5><u>Main Page</u></h5>
+      <h5><u>Conflict</u></h5>
     </a> &nbsp;&nbsp;&nbsp;
     <p></p>
     <p></p>
@@ -113,7 +135,7 @@
     </div>
   </div>
 
-  
+
   <div class="main" id="page3">
     <h1>Predictive Modeling</h1>
     <!-- Links to move from one page to the next -->
@@ -121,35 +143,49 @@
       <h5><u>Interactive Map</u></h5>
     </a> &nbsp;&nbsp;&nbsp;
     <a href="#page1" style="color:red;float: right; padding: 5px">
-      <h5><u>Main Page</u></h5>
-    </a> &nbsp;&nbsp;&nbsp;
-   
+      <h5><u>Conflict</u></h5>
+    </a>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="col-lg-5">
+      <figure class="highcharts-figure">
+        <div id="container"></div>
+      </figure>
+    </div>
 
     <div class="col-lg-4">
       <div class="slidecontainer">
         <p>Control of Corruption</p>
-        <input class='slider' id="myRange1" type="range" min="-2.5" max="2.5" value=".1">
+        <input class='slider' id="myRange1" type="range" min="-1.99" max="1.22" value=".1">
         <p>Value: <span id="demo1"></span></p>
         <p>Political Stability</p>
-        <input class='slider' id="myRange2" type="range" min="-2.5" max="2.5" value=".1">
+        <input class='slider' id="myRange2" type="range" min="-2.47" max="2.66" value=".1">
         <p>Value: <span id="demo2"></span></p>
-        <p>Ethnic Diversity Score</p>
-        <input class='slider' id="myRange3" type="range" min="0" max="1" value=".1">
+        <p>Government Effectiveness Score</p>
+        <input class='slider' id="myRange3" type="range" min="-2.08" max="0.73" value=".1">
         <p>Value: <span id="demo3"></span></p>
-        <p>GDP Growth Rate</p>
-        <input class='slider' id="myRange4" type="range" min="-60" max="125" value="5">
+        <p>Rule Of Law Score</p>
+        <input class='slider' id="myRange4" type="range" min="-2.71" max="1.02" value="5">
         <p>Value: <span id="demo4"></span></p>
+        <p>Ethnic Diversity Score</p>
+        <input class='slider' id="myRange5" type="range" min=".02" max=".909" value="5">
+        <p>Value: <span id="demo5"></span></p>
+        <p>GDP Per Capita Growth</p>
+        <input class='slider' id="myRange6" type="range" min="-40" max="70" value="5">
+        <p>Value: <span id="demo6"></span></p>
+        <p>FDI Inflows as % of GDP</p>
+        <input class='slider' id="myRange7" type="range" min="-8.7" max="103.34" value="5">
+        <p>Value: <span id="demo7"></span></p>
       </div>
-
-      <div class = 'row'>
-        <div id="controlPanel">
-          <h1 id="stopButton" class="button">Predict</h1>
-        </div>
+      <div id="controlPanel">
+        <h2 id="stopButton" class="button">Predict</h2>
       </div>
     </div>
-    
-    <div class='col-lg-3'>
 
+    <div class='col-lg-3'>
       <div id="traffic-light">
         <div id="peacefulLight" class="bulb">Stable</div>
         <div id="stableLight" class="bulb">Low Risk</div>
@@ -157,14 +193,12 @@
         <div id="dangerLight" class="bulb">Severe Risk</div>
       </div>
     </div>
-    
-    <div class="col-lg-5">
-      <figure class="highcharts-figure">
-        <div id="container"></div>
-      </figure>
-    </div>
-    
-    
+  </div>
+
+  
+
+  </div>
+
   </div>
 
   <!-- <script src="{{ url_for('static', filename='../static/js/config.js') }}"></script> -->
@@ -175,38 +209,61 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js"
     integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw=="
     crossorigin="anonymous"></script> -->
-    <script>
+  <script>
 
 
-      var slider1 = document.getElementById("myRange1");
-      var slider2 = document.getElementById("myRange2");
-      var slider3 = document.getElementById("myRange3");
-      var slider4 = document.getElementById("myRange4");
-      var output1 = document.getElementById("demo1");
-      var output2 = document.getElementById("demo2");
-      var output3 = document.getElementById("demo3");
-      var output4 = document.getElementById("demo4");
-      document.getElementById("myRange3").step = ".005";
-      document.getElementById("myRange2").step = ".1";
-      document.getElementById("myRange1").step = ".1";
-      output1.innerHTML = slider1.value;
-      output2.innerHTML = slider2.value;
-      output3.innerHTML = slider3.value;
-      output4.innerHTML = slider4.value;
+    var slider1 = document.getElementById("myRange1");
+    var slider2 = document.getElementById("myRange2");
+    var slider3 = document.getElementById("myRange3");
+    var slider4 = document.getElementById("myRange4");
+    var slider5 = document.getElementById("myRange5");
+    var slider6 = document.getElementById("myRange6");
+    var slider7 = document.getElementById("myRange7");
+    var output1 = document.getElementById("demo1");
+    var output2 = document.getElementById("demo2");
+    var output3 = document.getElementById("demo3");
+    var output4 = document.getElementById("demo4");
+    var output5 = document.getElementById("demo5");
+    var output6 = document.getElementById("demo6");
+    var output7 = document.getElementById("demo7");
+    document.getElementById("myRange1").step = ".01";
+    document.getElementById("myRange2").step = ".01";
+    document.getElementById("myRange3").step = ".01";
+    document.getElementById("myRange4").step = ".01";
+    document.getElementById("myRange5").step = ".005";
+    document.getElementById("myRange6").step = ".1";
+    document.getElementById("myRange7").step = ".1";
+    output1.innerHTML = slider1.value;
+    output2.innerHTML = slider2.value;
+    output3.innerHTML = slider3.value;
+    output4.innerHTML = slider4.value;
+    output5.innerHTML = slider5.value;
+    output6.innerHTML = slider6.value;
+    output7.innerHTML = slider7.value;
 
-      slider1.oninput = function () {
-        output1.innerHTML = this.value;
-      }
-      slider2.oninput = function () {
-        output2.innerHTML = this.value;
-      }
-      slider3.oninput = function () {
-        output3.innerHTML = this.value;
-      }
-      slider4.oninput = function () {
-        output4.innerHTML = this.value;
-      }
-    </script>
+
+    slider1.oninput = function () {
+      output1.innerHTML = this.value;
+    }
+    slider2.oninput = function () {
+      output2.innerHTML = this.value;
+    }
+    slider3.oninput = function () {
+      output3.innerHTML = this.value;
+    }
+    slider4.oninput = function () {
+      output4.innerHTML = this.value;
+    }
+    slider5.oninput = function () {
+      output5.innerHTML = this.value;
+    }
+    slider6.oninput = function () {
+      output6.innerHTML = this.value;
+    }
+    slider7.oninput = function () {
+      output7.innerHTML = this.value;
+    }
+  </script>
 
 
 </body>
