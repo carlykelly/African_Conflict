@@ -38,5 +38,4 @@ h5py==2.8.0
 keras==2.2.4
 bs4==0.0.1
 splinter==0.13.0
-werkzeug<1.0
 feedparser==5.2.1
