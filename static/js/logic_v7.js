@@ -234,6 +234,9 @@ function buildScatter(){
 // vvvvvvvvvvvvvvvvvvvvvvvvvv Build Graphs vvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function buildGraph(){
   
+
+  
+  
   var conflict_events_trace = {
     x: xAxis_year,
     y: yAxis_conflict_events,
@@ -597,6 +600,8 @@ function buildGraph(){
   // };
   var config2 = {responsive : true}
   Plotly.react ("one", data, layout, config2)
+
+  // document.getElementById("#one").classList.remove('Legend')
 }
 // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Build Graphs ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -669,6 +674,14 @@ function getSelectedCountryDataFromEndpoint(){
         yAxis_ruleoflaw_percentile.push(sced.ruleoflaw_percentile)
       })
       buildGraph()
+
+    
+
+      document.getElementsByClassName("legend")[0].classList.remove("legend")
+
+
+
+
     })
   }
 
