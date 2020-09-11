@@ -58,6 +58,14 @@
   <!-- <div id='fullPage'>
     <div class = "main" id="page1"> -->
   <div class='row' id='page1'>
+    <h3>"We are going to bring peace to the country,
+      <br>not the peace of rifles and bayonets,
+      <br>but the peace that comes from men's hearts and good will" 
+      <a href="https://en.wikipedia.org/wiki/Patrice_Lumumba" target="_blank"><h3>-Patrice Lumumba</h3></a>   
+  </div>
+
+  <div class='row'> 
+    <h1> Conflict 1998-2018 </h1>   
     <!-- Links to move from one page to the next -->
     <a href="#page3" style="color:red;float: right; margin-right: 20px">
       <h5><u>Predictive Modeling</u></h5>
@@ -67,15 +75,7 @@
     </a> &nbsp;&nbsp;&nbsp;
   </div>
 
-  <div class='row'>
-    <h3>"We are going to bring peace to the country,
-      <br>not the peace of rifles and bayonets,
-      <br>but the peace that comes from men's hearts and good will" - Patrice Lumumba</h3>
-    <br><br><br>
-  </div>
-
   <div class = 'row'>
-
     <div id='tableaudiv' class="col-lg-12">
       <!-- <center><div id='animated_map' class="justify-content-center"></div></center> -->
       <div class='tableauPlaceholder' id='viz1599780133264' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictVizSecond&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AfricaConflictVizSecond&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Af&#47;AfricaConflictVizSecond&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1599780133264');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='1040px';vizElement.style.maxWidth='2240px';vizElement.style.width='100%';vizElement.style.minHeight='476px';vizElement.style.maxHeight='1076px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='1040px';vizElement.style.maxWidth='2240px';vizElement.style.width='100%';vizElement.style.minHeight='476px';vizElement.style.maxHeight='1076px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='877px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
@@ -91,7 +91,7 @@
       <h5><u>Predictive Modeling</u></h5>
     </a> &nbsp;&nbsp;&nbsp;
     <a href="#page1" style="color:red;float: right; padding: 5px">
-      <h5><u>Main Page</u></h5>
+      <h5><u>Conflict</u></h5>
     </a> &nbsp;&nbsp;&nbsp;
     <p></p>
     <p></p>
@@ -121,49 +121,54 @@
       <h5><u>Interactive Map</u></h5>
     </a> &nbsp;&nbsp;&nbsp;
     <a href="#page1" style="color:red;float: right; padding: 5px">
-      <h5><u>Main Page</u></h5>
-    </a> &nbsp;&nbsp;&nbsp;
-   
+      <h5><u>Conflict</u></h5>
+    </a> 
+    <br>
+    <br>
+    <br>
+    
+
+    <div class="col-lg-5">
+      <figure class="highcharts-figure">
+        <div id="container"></div>
+      </figure>
+    </div>
 
     <div class="col-lg-4">
       <div class="slidecontainer">
-        <p>Control of Corruption</p>
+        Control of Corruption 
         <input class='slider' id="myRange1" type="range" min="-2.5" max="2.5" value=".1">
-        <p>Value: <span id="demo1"></span></p>
-        <p>Political Stability</p>
+        Value: <span id="demo1"></span>
+        <p></p>
+        Political Stability 
         <input class='slider' id="myRange2" type="range" min="-2.5" max="2.5" value=".1">
-        <p>Value: <span id="demo2"></span></p>
-        <p>Ethnic Diversity Score</p>
-        <input class='slider' id="myRange3" type="range" min="0" max="1" value=".1">
-        <p>Value: <span id="demo3"></span></p>
-        <p>GDP Growth Rate</p>
+        Value: <span id="demo2"></span>
+        <p></p>
+        Ethnic Diversity Score 
+        <input class='slider' id="myRange3" type="range" min="-1" max="1" value=".1">
+        Value: <span id="demo3"></span>
+        <p></p>
+        GDP Growth Rate 
         <input class='slider' id="myRange4" type="range" min="-60" max="125" value="5">
-        <p>Value: <span id="demo4"></span></p>
-      </div>
-
-      <div class = 'row'>
+        Value: <span id="demo4"></span>
+        <p></p>
         <div id="controlPanel">
-          <h1 id="stopButton" class="button">Predict</h1>
+          <h2 id="stopButton" class="button">Predict</h2>
         </div>
       </div>
     </div>
     
     <div class='col-lg-3'>
-
+     
       <div id="traffic-light">
         <div id="peacefulLight" class="bulb">Stable</div>
         <div id="stableLight" class="bulb">Low Risk</div>
         <div id="warningLight" class="bulb">Elevated Risk</div>
         <div id="dangerLight" class="bulb">Severe Risk</div>
       </div>
-    </div>
+    </div>    
     
-    <div class="col-lg-5">
-      <figure class="highcharts-figure">
-        <div id="container"></div>
-      </figure>
-    </div>
-    
+  </div>
     
   </div>
 
