@@ -677,9 +677,6 @@ function getSelectedCountryDataFromEndpoint(){
 
     
 
-      document.getElementsByClassName("legend")[0].classList.remove("legend")
-
-
 
 
     })
