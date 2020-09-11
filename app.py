@@ -157,16 +157,14 @@ from tensorflow import keras
 from keras.models import model_from_json
 from keras.models import Sequential
 from keras.layers import Dense
-json_file = open('model.json', 'r')
+json_file = open('model5.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 loaded_model = model_from_json(loaded_model_json)
 # load weights into new model
-loaded_model.load_weights("model_weights.h5")
+loaded_model.load_weights("model_weights5.h5")
 print("Loaded model from disk")
-new_data = np.array([[2.11, -1.24, 0.424, 34.44
- ]])
-print(f"Predicted class: {loaded_model.predict_classes(new_data)}")
+
 
 
 @app.route("/predict")
@@ -174,19 +172,25 @@ def predict():
 
     corruption_score = float(request.args.get('corruption_score'))
     stability_score = float(request.args.get('stability_score'))
+    government_effectiveness = float(request.args.get('government_effectiveness'))
+    rule_of_law = float(request.args.get('rule_of_law'))
     ethnic_score = float(request.args.get('ethnic_score'))
     gdp_per_capita = float(request.args.get('gdp_per_capita'))
+    fdi_inflows_gdp = float(request.args.get('fdi_inflows_gdp'))
 
-    user_inputs = np.array([[corruption_score, stability_score, ethnic_score, gdp_per_capita]])
+    user_inputs = np.array([[corruption_score, stability_score, government_effectiveness, rule_of_law, ethnic_score, gdp_per_capita, fdi_inflows_gdp]])
     predicted_class = loaded_model.predict_classes(user_inputs)
 
-    print(f'{corruption_score}, {stability_score}, {ethnic_score}, {gdp_per_capita}')   
+    print(f'{corruption_score}, {stability_score}, {government_effectiveness}, {rule_of_law}, {ethnic_score}, {gdp_per_capita}, {fdi_inflows_gdp}')   
 
     test_dict = {
         'corruption_score': corruption_score,
         'stability_score': stability_score,
+        'government_effectiveness': government_effectiveness,
+        'rule_of_law': rule_of_law,
         'ethnic_score': ethnic_score,
         'gdp_per_capita': gdp_per_capita,
+        'fdi_inflows_gdp': fdi_inflows_gdp,
         'predicted_class': str(predicted_class)
     }
 

@@ -136,22 +136,28 @@
 
     <div class="col-lg-4">
       <div class="slidecontainer">
-        Control of Corruption 
-        <input class='slider' id="myRange1" type="range" min="-2.5" max="2.5" value=".1">
-        Value: <span id="demo1"></span>
-        <p></p>
-        Political Stability 
-        <input class='slider' id="myRange2" type="range" min="-2.5" max="2.5" value=".1">
-        Value: <span id="demo2"></span>
-        <p></p>
-        Ethnic Diversity Score 
-        <input class='slider' id="myRange3" type="range" min="-1" max="1" value=".1">
-        Value: <span id="demo3"></span>
-        <p></p>
-        GDP Growth Rate 
-        <input class='slider' id="myRange4" type="range" min="-60" max="125" value="5">
-        Value: <span id="demo4"></span>
-        <p></p>
+        <p>Control of Corruption</p>
+        <input class='slider' id="myRange1" type="range" min="-1.99" max="1.22" value=".1">
+        <p>Value: <span id="demo1"></span></p>
+        <p>Political Stability</p>
+        <input class='slider' id="myRange2" type="range" min="-2.47" max="2.66" value=".1">
+        <p>Value: <span id="demo2"></span></p>
+        <p>Government Effectiveness Score</p>
+        <input class='slider' id="myRange3" type="range" min="-2.08" max="0.73" value=".1">
+        <p>Value: <span id="demo3"></span></p>
+        <p>Rule Of Law Score</p>
+        <input class='slider' id="myRange4" type="range" min="-2.71" max="1.02" value="5">
+        <p>Value: <span id="demo4"></span></p>
+        <p>Ethnic Diversity Score</p>
+        <input class='slider' id="myRange5" type="range" min=".02" max=".909" value="5">
+        <p>Value: <span id="demo5"></span></p>
+        <p>GDP Per Capita Growth</p>
+        <input class='slider' id="myRange6" type="range" min="-40" max="70" value="5">
+        <p>Value: <span id="demo6"></span></p>
+        <p>FDI Inflows as % of GDP</p>
+        <input class='slider' id="myRange7" type="range" min="-8.7" max="103.34" value="5">
+        <p>Value: <span id="demo7"></span></p>
+      </div>
         <div id="controlPanel">
           <h2 id="stopButton" class="button">Predict</h2>
         </div>
@@ -183,21 +189,35 @@
     <script>
 
 
-      var slider1 = document.getElementById("myRange1");
+var slider1 = document.getElementById("myRange1");
       var slider2 = document.getElementById("myRange2");
       var slider3 = document.getElementById("myRange3");
       var slider4 = document.getElementById("myRange4");
+      var slider5 = document.getElementById("myRange5");
+      var slider6 = document.getElementById("myRange6");
+      var slider7 = document.getElementById("myRange7");
       var output1 = document.getElementById("demo1");
       var output2 = document.getElementById("demo2");
       var output3 = document.getElementById("demo3");
       var output4 = document.getElementById("demo4");
-      document.getElementById("myRange3").step = ".005";
-      document.getElementById("myRange2").step = ".1";
-      document.getElementById("myRange1").step = ".1";
+      var output5 = document.getElementById("demo5");
+      var output6 = document.getElementById("demo6");
+      var output7 = document.getElementById("demo7");
+      document.getElementById("myRange1").step = ".01";
+      document.getElementById("myRange2").step = ".01";
+      document.getElementById("myRange3").step = ".01";
+      document.getElementById("myRange4").step = ".01";
+      document.getElementById("myRange5").step = ".005";
+      document.getElementById("myRange6").step = ".1";
+      document.getElementById("myRange7").step = ".1";
       output1.innerHTML = slider1.value;
       output2.innerHTML = slider2.value;
       output3.innerHTML = slider3.value;
       output4.innerHTML = slider4.value;
+      output5.innerHTML = slider5.value;
+      output6.innerHTML = slider6.value;
+      output7.innerHTML = slider7.value;
+
 
       slider1.oninput = function () {
         output1.innerHTML = this.value;
@@ -210,6 +230,15 @@
       }
       slider4.oninput = function () {
         output4.innerHTML = this.value;
+      }
+      slider5.oninput = function () {
+        output5.innerHTML = this.value;
+      }
+      slider6.oninput = function () {
+        output6.innerHTML = this.value;
+      }
+      slider7.oninput = function () {
+        output7.innerHTML = this.value;
       }
     </script>
 
