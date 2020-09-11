@@ -1,3 +1,5 @@
+/* Font */
+
 @font-face {
 	font-family: 'proxima_nova_rgregular';
 	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
@@ -9,9 +11,7 @@
 	font-style: normal;
 }
 
-
-
-
+/* Legend */
 .legend {
     padding: 6px 8px;
     font-family: 'proxima_nova_rgregular';
@@ -50,7 +50,7 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
 
-  /* End of Legend Styling */
+  /* Body / Graph / Map / Dropdown */
 
   body {
     padding: 0;
@@ -70,19 +70,15 @@
     height: 550px;
     position: relative
   }
-
-
-  
+ 
   html {
     height: 100%;
     position: relative;
     /* font-family: ; */
-  
   }
   
   #select {
-    padding-bottom: 10px;
-    
+    padding-bottom: 10px;  
   }
   
   .buttons {
@@ -103,6 +99,7 @@
     width: 730px;
   }
   
+  /* Text */
   
   h1{
     text-align: center;
@@ -205,14 +202,15 @@
 }
 
 .highcharts-data-table table {
-font-family: Verdana, sans-serif;
-border-collapse: collapse;
-border: 1px solid #EBEBEB;
-margin: 10px auto;
-text-align: center;
-width: 100%;
-max-width: 500px;
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #EBEBEB;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
 }
+
 .highcharts-data-table caption {
   padding: 1em 0;
   font-size: 1.2em;
@@ -232,12 +230,14 @@ font-weight: 600;
   background: #f1f7ff;
 }
 
+/*Animated Map */
+
 #animated_map {
   height:800 px;
   align-content: center;
   text-align: center;
 }
-
+/* Page Divs */
 html {
   scroll-behavior: smooth;
 }
@@ -245,7 +245,6 @@ html {
 #page1 {
   /* height: 775px; */
   background-color: #191a1a;
-  
 }
 
 #page2 {
@@ -257,9 +256,7 @@ html {
   height: 775px;
   /* background-color: red; */
 }
-
-
-
+/* Sliders & Traffic Light */
 .slidecontainer {
   width: 100%;
   color: #cad2d3
@@ -343,13 +340,14 @@ body {
   font-family: 'proxima_nova_rgregular'
 }
 
+/* Tableau */
 #tableaudiv{
 /* align-content: center; */
 margin-left: auto ;
 margin-right: auto ;
-
 }
 
+/* Random Forest */
 #Forest{
   overflow-x: scroll;
 }
