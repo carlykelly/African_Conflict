@@ -322,10 +322,10 @@ body {
 
 #traffic-light {
   height: 460px;
-  width: 180px;
+  width: 160px;
   float: left;
   background-color: #333;
-  border-radius: 40px;
+  border-radius: 30px;
   padding-left: 15px;
   transform: rotate(180deg);
 }
