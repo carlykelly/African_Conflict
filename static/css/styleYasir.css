@@ -155,15 +155,17 @@
   }
   
   #selDataset {
-    font-weight: bolder;
-    color: #17252A ;
+    /* font-weight: bolder; */
+    color: white ;
+    background-color: gray;
     border-width: 0 1px;
     border: solid;
-    /* border-color:  #c2c4c4  ; */
-    padding: 10px;
-    font-size: larger;
+    /* border-color: white  ; */
+    padding: 5px;
+    font-size: small;
     font-family: 'proxima_nova_rgregular';
   }
+
   
   .row {
     padding: 5px ;
@@ -243,7 +245,7 @@ html {
 
 #page1 {
   /* height: 775px; */
-  /* background-color: red; */
+  background-color: #191a1a;
 }
 
 #page2 {
@@ -324,7 +326,7 @@ body {
   background-color: #333;
   border-radius: 40px;
   padding-left: 15px;
-  transform: rotate(270deg);
+  transform: rotate(180deg);
 }
 
 .bulb {
@@ -337,7 +339,7 @@ body {
   border-radius: 50%;
   margin: 20px auto;
   transition: background 500ms;
-  transform: rotate(90deg);
+  transform: rotate(180deg);
   font-family: 'proxima_nova_rgregular'
 }
 
