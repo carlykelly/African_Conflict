@@ -351,5 +351,9 @@ margin-right: auto ;
 
 }
 
+#Forest{
+  overflow-x: scroll;
+}
+
 
 
