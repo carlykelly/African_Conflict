@@ -1291,17 +1291,17 @@ function illuminateRed() {
 
 function illuminateYellow() {
   clearLights();
-  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "yellow"; }, 500)
+  setTimeout(function () { document.getElementById('stableLight').style.backgroundColor = "yellow"; }, 500)
 }
 
 function illuminateOrange(){
   clearLights();
-  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "orange"; }, 500)
+  setTimeout(function () { document.getElementById('warningLight').style.backgroundColor = "orange"; }, 500)
 }
 
 function illuminateGreen(){
   clearLights();
-  setTimeout(function () { document.getElementById('dangerLight').style.backgroundColor = "green"; }, 500)
+  setTimeout(function () { document.getElementById('peacefulLight').style.backgroundColor = "green"; }, 500)
 }
 
 function clearLights() {
