@@ -39,4 +39,5 @@ Keras==2.4.3
 bs4==0.0.1
 splinter==0.13.0
 feedparser==5.2.1
+lxml==4.4.1
 
