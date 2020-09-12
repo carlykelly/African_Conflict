@@ -97,7 +97,6 @@ var yAxis_ruleoflaw_percentile = []
         // This runs when the speech recognition service starts
         recognition.onstart = function() {
             action.innerHTML = "<small>I'm listening...</small>";
-            // document.getElementsByClassName('material-icons').style.color='green';
         };
         
         recognition.onspeechend = function() {
