@@ -11,6 +11,41 @@
 	font-style: normal;
 }
 
+
+
+/* talking */
+button {
+  padding:3px;
+  background-color:white;
+  color: black;
+  border: 0px;
+  cursor:pointer;
+  border-radius: 5px;
+}
+/* #output {
+  background-color:#F9F9F9;
+  padding:10px;
+  width: 100%;
+  margin-top:20px;
+  line-height:30px;
+} */
+.hide {
+  display:none;
+}
+.show {
+  display:block;
+}
+/* talking */
+
+.material-icons{
+  position: relative;
+  font-size: 30px;
+  color:white;
+  cursor: pointer;
+  top: 13px;
+}
+
+
 /* Legend */
 .legend {
     padding: 6px 8px;
