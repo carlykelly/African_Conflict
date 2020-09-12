@@ -307,6 +307,7 @@ body {
 }
 
 .button {
+  font-family: 'proxima_nova_rgregular';
   background-color: gray;
   color: white;
   border-radius: 10px;

@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, func
 from bs4 import BeautifulSoup
 import requests
 
+
 is_heroku = False
 if 'IS_HEROKU' in os.environ:
     is_heroku = True
@@ -195,6 +196,11 @@ def predict():
     }
 
     return(jsonify(test_dict))
+
+
+@app.route("/random_forest")
+def forest():
+    return render_template("forest.html")
 
 
 if __name__ == '__main__':
