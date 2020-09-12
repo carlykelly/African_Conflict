@@ -10,6 +10,10 @@
   ​
   <title>African Conflict</title>
 
+  <!-- mic icon -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <!-- Leaflet CSS & JS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -117,8 +121,10 @@
     </a> &nbsp;&nbsp;&nbsp;
     <p></p>
     <p></p>
+    <div id="output" class="hide"></div>
     <div class="col-md-2">
-      <select id="selDataset"></select>
+      <select id="selDataset"> </select><i class="material-icons" onclick="runSpeechRecognition()">mic</i> &nbsp; <span id="action"></span>
+
     </div>
 
     <div id="sample-metadata" class="panel-body"></div>

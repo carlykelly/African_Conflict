@@ -69,6 +69,87 @@ var yAxis_corruption_control_percentile = []
 var yAxis_government_effectiveness_percentile = []
 var yAxis_ruleoflaw_percentile = []
 
+
+// Speech to text variables////
+ // get output div reference
+ var output 
+ var action  
+        // new speech recognition object
+  var SpeechRecognition 
+  var SpeechRecognition
+  var recognition
+  var transcript 
+  var confidence
+
+// Speech to text variables ////
+
+//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv Speech to text vvvvvvvvvvvvvvvvvvvvvvv
+  //html <script>
+  function runSpeechRecognition() {
+    // // get output div reference
+    output = document.getElementById("output");
+    // get action element reference
+    action = document.getElementById("action");
+    //     // new speech recognition object
+    SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    
+        // This runs when the speech recognition service starts
+        recognition.onstart = function() {
+            action.innerHTML = "<small>I'm listening...</small>";
+            // document.getElementsByClassName('material-icons').style.color='green';
+        };
+        
+        recognition.onspeechend = function() {
+            action.innerHTML = "<small>got it!</small>";
+            recognition.stop();
+        }
+      
+        // This runs when the speech recognition service returns result
+        recognition.onresult = function(event) {
+            transcript = event.results[0][0].transcript;
+           
+            output.innerHTML = transcript;
+            selected_country = output.innerHTML
+            output.classList.remove("hide");
+           d3.select('#selDataset').node().value = transcript
+          getSelectedCountryDataFromEndpoint()
+          makeOutline(transcript)
+          createNews(transcript)
+        };
+
+         // start recognition
+         recognition.start();
+        }
+  //html <script>
+
+  
+ 
+ // new speech recognition object
+  SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+              
+  // This runs when the speech recognition service starts
+  recognition.onstart = function() {
+      console.log("Say an African country.");
+  };
+
+  recognition.onspeechend = function() {
+      // when user is done speaking
+      recognition.stop();
+  }
+                
+  // This runs when the speech recognition service returns result
+  recognition.onresult = function(event) {
+      transcript = event.results[0][0].transcript;
+  };
+
+
+  // start recognition
+  recognition.start();
+
+ //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Speech to text ^^^^^^^^^^^^^^^^^^^^^^^
+
 // vvvvvvvvvvvvvvvvvvvvvvvvvvv Country news ticker generator vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 function createNews(country){
   var panel = d3.select('#sample-metadata');
@@ -107,8 +188,10 @@ function buildScatter(){
   };
 
   var ethnic_trace = {
-    x: scatter_xAxis_conflict_events,
-    y: scatter_yAxis_total_population,
+    x: scatter_yAxis_total_population,
+    y: scatter_xAxis_conflict_events,
+    // x: scatter_xAxis_conflict_events,
+    // y: scatter_yAxis_total_population,
     mode: 'markers',
     type: 'scatter',
     name: 'Country',
@@ -120,8 +203,10 @@ function buildScatter(){
   };
 
   var gdp_trace = {
-    x: scatter_xAxis_conflict_events,
-    y: scatter_yAxis_gdp_total,
+    x: scatter_yAxis_gdp_total,
+    y: scatter_xAxis_conflict_events,
+    // x: scatter_xAxis_conflict_events,
+    // y: scatter_yAxis_gdp_total,
     mode: 'markers',
     type: 'scatter',
     name: 'Country',
@@ -133,8 +218,10 @@ function buildScatter(){
   };
 
   var corr_trace = {
-    x: scatter_xAxis_conflict_events,
-    y: scatter_yAxis_corruption_control_percentile,
+    x: scatter_yAxis_corruption_control_percentile,
+    y: scatter_xAxis_conflict_events,
+    // x: scatter_xAxis_conflict_events,
+    // y: scatter_yAxis_corruption_control_percentile,
     mode: 'markers',
     type: 'scatter',
     name: 'Country',
@@ -153,10 +240,14 @@ function buildScatter(){
       "titlefont": {
         "color": 'white'
       },
-      xaxis: {title: "Country Conflict Events",
+      xaxis: {title: "Country Total GDP",
       color: 'white'},
-      yaxis: {title: "Country Total GDP",
+      yaxis: {title: "Country Conflict Events",
       color: 'white'},
+      // xaxis: {title: "Country Conflict Events",
+      // color: 'white'},
+      // yaxis: {title: "Country Total GDP",
+      // color: 'white'},
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
       // showlegend: true,
@@ -172,9 +263,9 @@ function buildScatter(){
       "titlefont": {
         "color": 'white'
       },
-      xaxis: {title: "Country Conflict Events",
+      xaxis: {title: "Country Total Population",
       color: 'white'},
-      yaxis: {title: "Country Total Population",
+      yaxis: {title: "Country Conflict Events",
       color: 'white'},
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
@@ -191,10 +282,14 @@ function buildScatter(){
       "titlefont": {
         "color": 'white'
       },
-      xaxis: {title: "Country Conflict Events",
+      xaxis: {title: "Country Corruption Control%",
       color: 'white'},
-      yaxis: {title: "Country Corruption Control %",
+      yaxis: {title: "Country Conflict Events",
       color: 'white'},
+      // xaxis: {title: "Country Conflict Events",
+      // color: 'white'},
+      // yaxis: {title: "Country Corruption Control %",
+      // color: 'white'},
       paper_bgcolor: '#191a1a',
       plot_bgcolor: '#191a1a',
       // showlegend: true,
