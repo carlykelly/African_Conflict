@@ -318,7 +318,7 @@ html {
   appearance: none;
   width: 25px;
   height: 25px;
-  background: url(https://www.govloop.com/wp-content/uploads/avatars/100365/5b97405413355-bpfull.png) center center no-repeat;
+  background: goldenrod;
   background-size: contain;
   cursor: pointer;
 }
